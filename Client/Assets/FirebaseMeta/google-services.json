@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "498620960522",
+    "project_id": "squarepang-e0555",
+    "storage_bucket": "squarepang-e0555.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498620960522:android:0b0b36d15e83ee7e6c74f3",
+        "android_client_info": {
+          "package_name": "com.TryCatch.SquarePang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498620960522-49ug3b03t9v95vj0grep1akibm54qvd8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP4w1UceiA-0jzFNQPVSZMrQe9bEEmaWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498620960522-49ug3b03t9v95vj0grep1akibm54qvd8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "498620960522-tqp936tpoojunnlkjncgbe3o2u31b7ur.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.TryCatch.SquarePang"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
