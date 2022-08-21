@@ -28,7 +28,7 @@ public class FB : MonoBehaviour
                 // Set a flag here to indicate whether Firebase is ready to use by your app.
                 onReadyFireBase?.Invoke(Firebase.FirebaseApp.DefaultInstance);
 
-                Firebase.Analytics.FirebaseAnalytics.LogEvent(Firebase.Analytics.FirebaseAnalytics.EventAppOpen);
+                //Firebase.Analytics.FirebaseAnalytics.LogEvent(Firebase.Analytics.FirebaseAnalytics.EventAppOpen);
             }
             else
             {

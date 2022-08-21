@@ -13,7 +13,16 @@ public class GPGS : MonoBehaviour
 
     private void Start()
     {
-        PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+        }
+        else
+        {
+            loginInfo.gameObject.SetActive(false);
+            userImage.gameObject.SetActive(false);
+        }
+
         //PlayGamesPlatform.Activate();
         //Social.localUser.Authenticate(ProcessAuthentication);
     }
