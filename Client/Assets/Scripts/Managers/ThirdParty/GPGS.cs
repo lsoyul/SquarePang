@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_ANDROID
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
-
+#endif
 
 public class GPGS : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class GPGS : MonoBehaviour
         //Social.localUser.Authenticate(ProcessAuthentication);
     }
 
+#if UNITY_ANDROID
     internal void ProcessAuthentication(SignInStatus status)
     {
         if (status == SignInStatus.Success)
@@ -48,4 +50,5 @@ public class GPGS : MonoBehaviour
             loginInfo.text = "==Logout State: " + status.ToString();
         }
     }
+#endif
 }
