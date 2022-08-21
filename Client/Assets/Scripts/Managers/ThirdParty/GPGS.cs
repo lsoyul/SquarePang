@@ -6,6 +6,7 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
 
+
 public class GPGS : MonoBehaviour
 {
     public TMPro.TMP_Text loginInfo;
@@ -13,15 +14,15 @@ public class GPGS : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_ANDROID
         if (Application.platform == RuntimePlatform.Android)
         {
             PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
         }
-        else
-        {
-            loginInfo.gameObject.SetActive(false);
-            userImage.gameObject.SetActive(false);
-        }
+#else
+        loginInfo.gameObject.SetActive(false);
+        userImage.gameObject.SetActive(false);
+#endif   
 
         //PlayGamesPlatform.Activate();
         //Social.localUser.Authenticate(ProcessAuthentication);
