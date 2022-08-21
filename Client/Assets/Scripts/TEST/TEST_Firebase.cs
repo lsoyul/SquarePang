@@ -10,12 +10,12 @@ public class TEST_Firebase : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        FirebaseInit.onReadyFireBase += OnReadyFireBase;
+        FB.onReadyFireBase += OnReadyFireBase;
     }
 
     private void OnDestroy()
     {
-        FirebaseInit.onReadyFireBase -= OnReadyFireBase;
+        FB.onReadyFireBase -= OnReadyFireBase;
     }
 
     private void Update()

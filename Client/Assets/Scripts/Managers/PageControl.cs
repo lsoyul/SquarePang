@@ -1,0 +1,44 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PageControl : MonoBehaviour
+{
+    public GameObject TitlePage;
+    public GameObject GamePagee;
+
+    bool isInit = false;
+
+    void Awake()
+    {
+        FB.onReadyFireBase += OnReadyFireBase;
+    }
+
+    private void OnDestroy()
+    {
+        FB.onReadyFireBase -= OnReadyFireBase;
+    }
+
+
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void OnReadyFireBase(Firebase.FirebaseApp app)
+    {
+        isInit = true;
+    }
+
+    public void OnClickGameStart()
+    {
+        TitlePage.SetActive(false);
+        GamePagee.SetActive(true);
+    }
+}

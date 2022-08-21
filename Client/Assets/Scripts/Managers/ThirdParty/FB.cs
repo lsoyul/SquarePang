@@ -4,14 +4,18 @@ using UnityEngine;
 
 using System;
 
-public class FirebaseInit : MonoBehaviour
+public class FB : MonoBehaviour
 {
-    Firebase.FirebaseApp app;
+    public static Firebase.FirebaseApp App;
 
     public static Action<Firebase.FirebaseApp> onReadyFireBase;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
+    {
+        StartFirebaseInit();
+    }
+
+    public static void StartFirebaseInit()
     {
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
@@ -19,7 +23,7 @@ public class FirebaseInit : MonoBehaviour
             {
                 // Create and hold a reference to your FirebaseApp,
                 // where app is a Firebase.FirebaseApp property of your application class.
-                app = Firebase.FirebaseApp.DefaultInstance;
+                App = Firebase.FirebaseApp.DefaultInstance;
 
                 // Set a flag here to indicate whether Firebase is ready to use by your app.
                 onReadyFireBase?.Invoke(Firebase.FirebaseApp.DefaultInstance);
@@ -35,9 +39,4 @@ public class FirebaseInit : MonoBehaviour
         });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
