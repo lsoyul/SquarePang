@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SocialPlatforms;
+
 #if UNITY_ANDROID
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-using UnityEngine.SocialPlatforms;
+
+#elif UNITY_IOS
+using UnityEngine.iOS;
+using UnityEngine.SocialPlatforms.GameCenter;
 #endif
+
 
 public class GPGS : MonoBehaviour
 {
@@ -16,14 +22,34 @@ public class GPGS : MonoBehaviour
     private void Start()
     {
 #if UNITY_ANDROID
-        if (Application.platform == RuntimePlatform.Android)
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
+#endif
+
+#if UNITY_ANDROID || UNITY_IOS
+        //PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+
+        if (Social.localUser.authenticated == false)
         {
-            PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+            Social.localUser.Authenticate(success =>
+            {
+                if (success)
+                {
+                    string infos = string.Empty;
+                    infos += "=ID: " + Social.localUser.id + "\n";
+                    infos += "=Name: " + Social.localUser.userName + "\n";
+                    loginInfo.text = infos;
+                    userImage.texture = Social.localUser.image;
+                }
+                else
+                    Debug.Log("Authentication failed");
+            });
         }
+        //GameCenterLogin();
 #else
         loginInfo.gameObject.SetActive(false);
         userImage.gameObject.SetActive(false);
-#endif   
+#endif
 
         //PlayGamesPlatform.Activate();
         //Social.localUser.Authenticate(ProcessAuthentication);
@@ -50,5 +76,32 @@ public class GPGS : MonoBehaviour
             loginInfo.text = "==Logout State: " + status.ToString();
         }
     }
+#endif
+
+#if UNITY_IOS
+
+    public void GameCenterLogin()
+    {
+        if (Social.localUser.authenticated == true)
+        {
+            Debug.Log("Success to true");
+        }
+        else
+        {
+            Social.localUser.Authenticate((bool success) =>
+            {
+                if (success)
+                {
+                    Debug.Log("Success to authenticate");
+                }
+                else
+                {
+                    Debug.Log("Faile to login");
+                }
+            });
+        }
+    }
+
+
 #endif
 }

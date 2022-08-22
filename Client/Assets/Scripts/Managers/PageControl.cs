@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class PageControl : MonoBehaviour
 {
@@ -17,18 +18,6 @@ public class PageControl : MonoBehaviour
     private void OnDestroy()
     {
         FB.onReadyFireBase -= OnReadyFireBase;
-    }
-
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void OnReadyFireBase(Firebase.FirebaseApp app)
