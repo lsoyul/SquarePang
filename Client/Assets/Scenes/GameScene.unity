@@ -2952,7 +2952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -289, y: -65.9}
+  m_AnchoredPosition: {x: -289, y: -119.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &743087772
@@ -3851,7 +3851,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 0
+  IsFinished: 1
 --- !u!114 &955385100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3984,7 +3984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -107.7, y: -303.35}
+  m_AnchoredPosition: {x: -107.7, y: -302.6}
   m_SizeDelta: {x: 200, y: 399}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975374106
@@ -4700,7 +4700,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 0
+  IsFinished: 1
 --- !u!1 &1067282286
 GameObject:
   m_ObjectHideFlags: 0
@@ -4994,7 +4994,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 0
+  IsFinished: 1
 --- !u!114 &1149063558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5677,7 +5677,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 1
   ForWords: 
-  IsFinished: 1
+  IsFinished: 0
 --- !u!114 &1394424071
 MonoBehaviour:
   m_ObjectHideFlags: 0
