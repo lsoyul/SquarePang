@@ -88,9 +88,13 @@ public class RankingControl : MonoBehaviour
 
     void OnGameOver(GameStatics.GameEndType gameEndType)
     {
-        if (Social.localUser.authenticated == true)
+        if (Social.localUser.authenticated == true && gameEndType != GameStatics.GameEndType.GiveUp)
         {
-            ReportScore(GameBoard.CurGameMode, GameBoard.Score_MadeBlocks);
+            if ((GameBoard.CurGameMode == GameStatics.GameMode.Sprint && gameEndType == GameStatics.GameEndType.SprintFinish)
+                || (GameBoard.CurGameMode == GameStatics.GameMode.Endless && gameEndType == GameStatics.GameEndType.GameOver))
+            {
+                ReportScore(GameBoard.CurGameMode, GameBoard.Score_MadeBlocks);
+            }
         }
     }
 }
