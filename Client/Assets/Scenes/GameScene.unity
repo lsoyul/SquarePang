@@ -1532,7 +1532,7 @@ MonoBehaviour:
   - {fileID: 861441067}
   - {fileID: 225723084}
   - {fileID: 698395233}
-  grabMoveLerp: 0.8
+  grabMoveLerp: 0.7
 --- !u!1 &189355520
 GameObject:
   m_ObjectHideFlags: 0

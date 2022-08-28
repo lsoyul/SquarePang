@@ -27,7 +27,7 @@ public class BlockControl : MonoBehaviour
     private bool isGrabbing = false;
 
     Vector3 moveTargetPos;
-    private Vector3 grabOffsetPosition = Vector3.zero;
+    //private Vector3 grabOffsetPosition = Vector3.zero;
 
     public static int beforeUseBreakerCount = 0;
 
@@ -52,6 +52,8 @@ public class BlockControl : MonoBehaviour
     private void Start()
     {
         OnInitBoard();
+
+        screenPosGrabOffset.y = Screen.height * screenPosGrabOffsetRatio;
     }
 
     void OnInitBoard()
@@ -60,18 +62,21 @@ public class BlockControl : MonoBehaviour
         UpdatePolyominoPos();
     }
 
+    float screenPosGrabOffsetRatio = 200f / 1920f;
+    private Vector2 screenPosGrabOffset = new Vector3(0f, 200f);
 
     void OnGrabPolyomino(PolyominoBase targetPolyomino, PointerEventData eventData)
     {
         if (PointerManager.CurGrabbingPolyomino != null)
         {
-            Vector3 screenPos = eventData.position;
+            Vector3 screenPos = eventData.position + screenPosGrabOffset;
             screenPos.z = -(Camera.main.transform.position.z + 0.3f);   // 0.3 for duplicate
 
-            grabOffsetPosition = Camera.main.ScreenToWorldPoint(screenPos) - targetPolyomino.transform.position;
-            //grabOffsetPosition.z = 0.3f;
+            //grabOffsetPosition = Camera.main.ScreenToWorldPoint(screenPos) - targetPolyomino.transform.position;
+            
 
-            moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos) - grabOffsetPosition;
+            //moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos) - grabOffsetPosition;
+            moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos);
             //Debug.Log("==OnMovePolyomino: " + targetWorldPos);
             isGrabbing = true;
         }
@@ -127,12 +132,12 @@ public class BlockControl : MonoBehaviour
     {
         if (PointerManager.CurGrabbingPolyomino != null)
         {
-            Vector3 screenPos = moveScreenPos;
+            Vector3 screenPos = moveScreenPos + screenPosGrabOffset;
             screenPos.z = -(Camera.main.transform.position.z + 0.3f);
-            
-            moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos) - grabOffsetPosition;
-            //Debug.Log("==OnMovePolyomino: " + targetWorldPos);
-            
+
+            //moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos) - grabOffsetPosition;
+            moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos);
+
         }
     }
 
