@@ -24,4 +24,23 @@ public static class GameStatics
         Rot180,
         Rot270
     }
+
+    public enum GameMode
+    {
+        Sprint,
+        Endless,
+    }
+
+    public enum GamePage
+    {
+        Title,
+        Game
+    }
+
+    public enum GameEndType
+    {
+        GameOver,
+        SprintFinish,
+        GiveUp
+    }
 }

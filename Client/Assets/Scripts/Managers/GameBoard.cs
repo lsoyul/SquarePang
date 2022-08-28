@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+using static GameStatics;
+
 /*
  * Block size : 1 unity unit
  */
@@ -24,7 +26,12 @@ public class GameBoard : MonoBehaviour
     public static Action<int, int> onChangeScore;   // getScore, totalScore
     public static Action onInitBoard;
     public static Action<List<List<BlockSlot>>, int> onMadeSquare;  // madelist, breakerCount
-    public static Action onGameOver;
+    public static Action<GameEndType> onGameOver;
+
+    public static GameMode CurGameMode = GameMode.Sprint;
+
+    public static int SprintModeMaxTargetSquareCount = 10;
+    public static int sprintModeCurMadeSquareCount = 0;
 
     // =============== private
     private static List<List<BlockSlot>> blockSlots = new List<List<BlockSlot>>();
@@ -84,6 +91,8 @@ public class GameBoard : MonoBehaviour
 
         if (madeSlotList.Count > 0)
         {
+            sprintModeCurMadeSquareCount += madeSlotList.Count;
+
             onMadeSquare?.Invoke(madeSlotList, RemainBreakerCount);
 
             RemainBreakerCount = 0;
@@ -94,8 +103,17 @@ public class GameBoard : MonoBehaviour
 
         onChangeScore?.Invoke(curScore, Score_MadeBlocks);
 
+        // Check Game Finish (if sprintMode)
+        if (CurGameMode == GameMode.Sprint)
+        {
+            if (sprintModeCurMadeSquareCount >= SprintModeMaxTargetSquareCount)
+            {
+                onGameOver?.Invoke(GameEndType.SprintFinish);
+            }
+        }
+
         // Check Game Over
-        if (IsGameOver() == true) onGameOver?.Invoke();
+        if (IsGameOver() == true) onGameOver?.Invoke(GameEndType.GameOver);
     }
 
     bool IsGameOver()
@@ -172,6 +190,7 @@ public class GameBoard : MonoBehaviour
 
     public void InitGameBoardBase(int boardWidth, int boardHeight)
     {
+        sprintModeCurMadeSquareCount = 0;
         Score_MadeBlocks = 0;
         RemainBreakerCount = 0;
 

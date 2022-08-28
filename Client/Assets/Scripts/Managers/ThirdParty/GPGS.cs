@@ -36,7 +36,7 @@ public class GPGS : MonoBehaviour
                 if (success)
                 {
                     string infos = string.Empty;
-                    infos += "=Name: " + Social.localUser.userName + "\n";
+                    infos += "=Name: " + Social.localUser.userName;
                     loginInfo.text = infos;
                     userImage.texture = Social.localUser.image;
                 }
