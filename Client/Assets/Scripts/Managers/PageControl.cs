@@ -22,6 +22,11 @@ public class PageControl : MonoBehaviour
     void Awake()
     {
         FB.onReadyFireBase += OnReadyFireBase;
+
+        if (CurPage == GamePage.Title)
+        {
+            SPSoundManager.PlayMusic(SPSoundManager.Sound_BGM.Title);
+        }
     }
 
     private void OnDestroy()
