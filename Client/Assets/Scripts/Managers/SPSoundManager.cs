@@ -4,12 +4,17 @@ using UnityEngine;
 
 using DigitalRuby.SoundManagerNamespace;
 
+using UnityEngine.UI;
+
 public class SPSoundManager : MonoBehaviour
 {
     public enum Sound_BGM
     {
         Title,
     }
+
+    public Slider Volume_Music;
+    public Slider Volume_Sound;
 
     public GameObject MusicAudioSourcesRoot;
     public GameObject SoundAudioSourcesRoot;
@@ -49,6 +54,9 @@ public class SPSoundManager : MonoBehaviour
                     }
                 }
             }
+
+            if (Volume_Music != null) SoundManager.MusicVolume = Volume_Music.value;
+            if (Volume_Sound != null) SoundManager.SoundVolume = Volume_Sound.value;
         }
 
         isInitializeSounds = true;
@@ -62,5 +70,15 @@ public class SPSoundManager : MonoBehaviour
         {
             MusicAudioSources[musicName].PlayLoopingMusicManaged(1f, 2f, isLoop);
         }
+    }
+
+    public void OnChangeMusicVolume()
+    {
+        SoundManager.MusicVolume = Volume_Music.value;
+    }
+
+    public void OnChangeSoundVolume()
+    {
+        SoundManager.SoundVolume = Volume_Sound.value;
     }
 }
