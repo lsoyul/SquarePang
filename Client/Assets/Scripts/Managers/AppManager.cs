@@ -17,11 +17,13 @@ public class AppManager : MonoBehaviour
 
     public void OnClickSettingButton()
     {
-        if (isSettingOn == false) tween_SettingPopup.DOPlayForward();
-        else tween_SettingPopup.DOPlayBackwards();
-        
+        tween_SettingPopup.DOPlayForward();
+        isSettingOn = true;
+    }
 
-        isSettingOn = !isSettingOn;
-
+    public void OnClickSettingExitButton()
+    {
+        tween_SettingPopup.DOPlayBackwards();
+        isSettingOn = false;
     }
 }
