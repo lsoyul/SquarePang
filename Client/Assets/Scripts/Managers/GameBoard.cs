@@ -25,7 +25,7 @@ public class GameBoard : MonoBehaviour
 
     public static Action<int, int> onChangeScore;   // getScore, totalScore
     public static Action onInitBoard;
-    public static Action<List<List<BlockSlot>>, int> onMadeSquare;  // madelist, breakerCount
+    public static Action<List<List<BlockSlot>>, int, bool> onMadeSquare;  // madelist, breakerCount, isCleanBoard
     public static Action<GameEndType> onGameOver;
 
     public static GameMode CurGameMode = GameMode.Sprint;
@@ -87,13 +87,17 @@ public class GameBoard : MonoBehaviour
 
         if (useBreakerScoreMultiply) curScore *= (RemainBreakerCount + 1);
 
+        bool isCleanBoard = IsCleanBoard();
+
+        if (isCleanBoard) curScore *= 2;
+
         Score_MadeBlocks += curScore;
 
         if (madeSlotList.Count > 0)
         {
             sprintModeCurMadeSquareCount += madeSlotList.Count;
 
-            onMadeSquare?.Invoke(madeSlotList, RemainBreakerCount);
+            onMadeSquare?.Invoke(madeSlotList, RemainBreakerCount, isCleanBoard);
 
             RemainBreakerCount = 0;
             //RemainBreakerCount = GetAfterBreakerCount(madeSlotList);
@@ -115,6 +119,21 @@ public class GameBoard : MonoBehaviour
         // Check Game Over
         if (IsGameOver() == true) onGameOver?.Invoke(GameEndType.GameOver);
     }
+
+
+    bool IsCleanBoard()
+    {
+        foreach (List<BlockSlot> slots in blockSlots)
+        {
+            foreach (BlockSlot slot in slots)
+            {
+                if (slot.curBlock != null) return false;
+            }
+        }
+
+        return true;
+    }
+
 
     bool IsGameOver()
     {

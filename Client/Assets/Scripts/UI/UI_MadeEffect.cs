@@ -9,6 +9,8 @@ public class UI_MadeEffect : MonoBehaviour
     public TMPro.TMP_Text madeScore;
     public TMPro.TMP_Text madeBonus;
 
+    public TMPro.TMP_Text cleanText;
+
     private void Awake()
     {
         madeTextRoot.SetActive(false);
@@ -20,7 +22,7 @@ public class UI_MadeEffect : MonoBehaviour
         GameBoard.onMadeSquare -= OnMadeSquare;
     }
 
-    void OnMadeSquare(List<List<BlockSlot>> madeSlots, int breakerCount)
+    void OnMadeSquare(List<List<BlockSlot>> madeSlots, int breakerCount, bool isCleanBoard)
     {
         Vector3 worldCenterPos = Vector3.zero;
 
@@ -74,6 +76,14 @@ public class UI_MadeEffect : MonoBehaviour
         madeScore.GetComponent<TMPro.TextMeshProEffect>().Play();
         madeBonus.GetComponent<TMPro.TextMeshProEffect>().Play();
 
+        if (isCleanBoard)
+        {
+            cleanText.gameObject.SetActive(true);
+            cleanText.GetComponent<TMPro.TextMeshProEffect>().Play();
+
+            StartCoroutine(DelayedDisable_Clean());
+        }
+
         StartCoroutine(DelayedDisable());
         
     }
@@ -84,5 +94,12 @@ public class UI_MadeEffect : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         madeTextRoot.SetActive(false);
+    }
+
+    IEnumerator DelayedDisable_Clean()
+    {
+        yield return new WaitForSeconds(2f);
+
+        cleanText.gameObject.SetActive(false);
     }
 }

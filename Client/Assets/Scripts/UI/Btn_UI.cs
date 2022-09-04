@@ -78,7 +78,7 @@ public class Btn_UI : MonoBehaviour
         }
     }
 
-    void OnMadeSquare(List<List<BlockSlot>> slotLists, int remainBreaker)
+    void OnMadeSquare(List<List<BlockSlot>> slotLists, int remainBreaker, bool isCleanBoard)
     {
         sprintText.text = string.Format("{0}/{1}", GameBoard.sprintModeCurMadeSquareCount, GameBoard.SprintModeMaxTargetSquareCount);
     }
