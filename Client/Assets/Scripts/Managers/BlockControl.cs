@@ -18,9 +18,10 @@ public class BlockControl : MonoBehaviour
 
     public float grabMoveLerp = 0f;
 
-    private static List<GameObject> prepareBlocks = new List<GameObject>();
+    public static List<GameObject> PrepareBlocks = new List<GameObject>();
 
 
+    public static Action onInitBlockControls;
     public static Action onFinishReleasePolyomino;
     public static Action<List<BlockSlot>> onImpossiblePutBlockByBreakerCount;
 
@@ -65,12 +66,14 @@ public class BlockControl : MonoBehaviour
     float screenPosGrabOffsetRatio = 200f / 1920f;
     private Vector2 screenPosGrabOffset = new Vector3(0f, 200f);
 
+    float grabHeight = 2f;
+
     void OnGrabPolyomino(PolyominoBase targetPolyomino, PointerEventData eventData)
     {
         if (PointerManager.CurGrabbingPolyomino != null)
         {
             Vector3 screenPos = eventData.position + screenPosGrabOffset;
-            screenPos.z = -(Camera.main.transform.position.z + 0.3f);   // 0.3 for duplicate
+            screenPos.z = -(Camera.main.transform.position.z + grabHeight);   // 0.3 for duplicate
 
             //grabOffsetPosition = Camera.main.ScreenToWorldPoint(screenPos) - targetPolyomino.transform.position;
             
@@ -103,8 +106,8 @@ public class BlockControl : MonoBehaviour
     {
         NextBlocks.Remove(selectedBlock.GetRootGO());
         //NextBlocks.RemoveAt(0);
-        NextBlocks.Add(prepareBlocks[0]);
-        prepareBlocks.RemoveAt(0);
+        NextBlocks.Add(PrepareBlocks[0]);
+        PrepareBlocks.RemoveAt(0);
 
         UpdatePolyominoPos();
 
@@ -114,17 +117,27 @@ public class BlockControl : MonoBehaviour
 
     void CheckPrepareBlocksEmpty()
     {
-        if (prepareBlocks.Count == 0)
+        if (PrepareBlocks.Count == 0)
         {
             foreach (GameObject go in polyominoBaseList)
             {
                 GameObject newGO = Instantiate(go, nextBlockRoot.transform);
                 newGO.SetActive(false);
 
-                prepareBlocks.Add(newGO);
+                PolyominoBase pb = newGO.GetComponentInChildren<PolyominoBase>();
+                if (pb != null)
+                {
+                    foreach (Block block in pb.blocks)
+                    {
+                        block.SetBlockVisual(TEST_ChangeShape.CurVisual);
+                    } 
+                }
+
+
+                PrepareBlocks.Add(newGO);
             }
 
-            prepareBlocks.Shuffle();
+            PrepareBlocks.Shuffle();
         }
     }
 
@@ -133,7 +146,7 @@ public class BlockControl : MonoBehaviour
         if (PointerManager.CurGrabbingPolyomino != null)
         {
             Vector3 screenPos = moveScreenPos + screenPosGrabOffset;
-            screenPos.z = -(Camera.main.transform.position.z + 0.3f);
+            screenPos.z = -(Camera.main.transform.position.z + grabHeight);
 
             //moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos) - grabOffsetPosition;
             moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos);
@@ -157,13 +170,13 @@ public class BlockControl : MonoBehaviour
             Destroy(nextblock);
         }
 
-        foreach (GameObject prepareBlock in prepareBlocks)
+        foreach (GameObject prepareBlock in PrepareBlocks)
         {
             Destroy(prepareBlock);
         }
 
         NextBlocks.Clear();
-        prepareBlocks.Clear();
+        PrepareBlocks.Clear();
 
         foreach (GameObject go in polyominoBaseList)
         {
@@ -177,12 +190,13 @@ public class BlockControl : MonoBehaviour
             GameObject newGO = Instantiate(go, nextBlockRoot.transform);
             newGO.SetActive(false);
 
-            prepareBlocks.Add(newGO);
+            PrepareBlocks.Add(newGO);
         }
 
         NextBlocks.Shuffle();
-        prepareBlocks.Shuffle();
+        PrepareBlocks.Shuffle();
 
+        onInitBlockControls?.Invoke();
     }
 
     public static void OnClickRotate()

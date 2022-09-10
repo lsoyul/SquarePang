@@ -33,6 +33,8 @@ public class GameBoard : MonoBehaviour
     public static int SprintModeMaxTargetSquareCount = 10;
     public static int sprintModeCurMadeSquareCount = 0;
 
+    public static float ValidReleaseMaxDist = 0f;
+
     // =============== private
     private static List<List<BlockSlot>> blockSlots = new List<List<BlockSlot>>();
     private List<int> matchSquareSizes = new List<int>();
@@ -120,6 +122,10 @@ public class GameBoard : MonoBehaviour
         if (IsGameOver() == true) onGameOver?.Invoke(GameEndType.GameOver);
     }
 
+    public static List<List<BlockSlot>> GetBlockSlotsOnBoard()
+    {
+        return blockSlots;
+    }
 
     bool IsCleanBoard()
     {
@@ -243,6 +249,8 @@ public class GameBoard : MonoBehaviour
             blockSlots.Add(newBlockSlotList);
         }
 
+        ValidReleaseMaxDist = Vector2.Distance(Camera.main.WorldToScreenPoint(blockSlots[0][1].transform.position), Camera.main.WorldToScreenPoint(blockSlots[0][2].transform.position));
+
         onChangeScore?.Invoke(0, Score_MadeBlocks);
         onInitBoard?.Invoke();
     }
@@ -277,18 +285,25 @@ public class GameBoard : MonoBehaviour
 
     static BlockSlot IsThisPosOnSlot(Vector3 targetWPos)
     {
+        Vector2 targetSreenPos = Camera.main.WorldToScreenPoint(targetWPos);
+
+        BlockSlot targetSlot = null;
+
         foreach (var widthList in blockSlots)
         {
+            float minDist = 9999f;
             foreach (BlockSlot slot in widthList)
             {
-                if (Vector2.Distance(slot.transform.position, targetWPos) < 0.5f)
+                float dist = Vector2.Distance(Camera.main.WorldToScreenPoint(slot.transform.position), targetSreenPos);
+                if (dist < minDist && dist < ValidReleaseMaxDist)
                 {
-                    return slot;
+                    minDist = dist;
+                    targetSlot = slot;
                 }
             }
         }
 
-        return null;
+        return targetSlot;
     }
 
     static List<BlockSlot> GetFitSlotList(BlockSlot firstOnSlot, List<PolyominoBase.relativePosIndex> relativePosList)

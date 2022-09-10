@@ -32,6 +32,7 @@ public class BlockSlot : MonoBehaviour
 
             curBlock.transform.parent = this.transform;
             curBlock.transform.localPosition = Vector3.zero;
+            curBlock.transform.localRotation = Quaternion.identity;
         }
 
         return this;
