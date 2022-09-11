@@ -82,11 +82,15 @@ public class BlockControl : MonoBehaviour
             moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos);
             //Debug.Log("==OnMovePolyomino: " + targetWorldPos);
             isGrabbing = true;
+
+            SetPolyominoAlpha(PointerManager.CurGrabbingPolyomino, 0.2f);
         }
     }
 
     void OnReleasePolyomino(PolyominoBase targetPolyomino)
     {
+        SetPolyominoAlpha(targetPolyomino, 1f);
+
         if (CheckIsOnGameBoard(targetPolyomino))
         {
             SpendSelectedBlock(targetPolyomino);
@@ -100,6 +104,19 @@ public class BlockControl : MonoBehaviour
 
         isGrabbing = false;
         onFinishReleasePolyomino?.Invoke();
+    }
+
+    void OnMovePolyomino(Vector2 moveScreenPos)
+    {
+        if (PointerManager.CurGrabbingPolyomino != null)
+        {
+            Vector3 screenPos = moveScreenPos + screenPosGrabOffset;
+            screenPos.z = -(Camera.main.transform.position.z + grabHeight);
+
+            //moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos) - grabOffsetPosition;
+            moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos);
+
+        }
     }
 
     void SpendSelectedBlock(PolyominoBase selectedBlock)
@@ -141,16 +158,11 @@ public class BlockControl : MonoBehaviour
         }
     }
 
-    void OnMovePolyomino(Vector2 moveScreenPos)
+    void SetPolyominoAlpha(PolyominoBase obj, float alphaValue)
     {
-        if (PointerManager.CurGrabbingPolyomino != null)
+        foreach (Block block in obj.blocks)
         {
-            Vector3 screenPos = moveScreenPos + screenPosGrabOffset;
-            screenPos.z = -(Camera.main.transform.position.z + grabHeight);
-
-            //moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos) - grabOffsetPosition;
-            moveTargetPos = Camera.main.ScreenToWorldPoint(screenPos);
-
+            block.SetBlockTransparent(alphaValue);
         }
     }
 

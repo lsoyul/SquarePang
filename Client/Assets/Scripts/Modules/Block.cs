@@ -61,4 +61,28 @@ public class Block : MonoBehaviour
                 break;
         }
     }
+
+    public void SetBlockTransparent(float alphaValue)
+    {
+        Renderer hardMatRenderer = HardBlocks.GetComponent<Renderer>();
+        Color hardMatColor = hardMatRenderer.material.color;
+        hardMatColor.a = alphaValue;
+        hardMatRenderer.material.color = hardMatColor;
+
+        Renderer softMatRenderer = SoftBlocks.GetComponent<Renderer>();
+        Color softMatColor = softMatRenderer.material.color;
+        softMatColor.a = alphaValue;
+        softMatRenderer.material.color = softMatColor;
+
+        Renderer paperMatRenderer = PaperBlocks.GetComponent<Renderer>();
+        Color paperMatColor = paperMatRenderer.material.color;
+        paperMatColor.a = alphaValue;
+        paperMatRenderer.material.color = paperMatColor;
+
+        Renderer roundMatRenderer = RoundBlocks.GetComponent<Renderer>();
+        Color roundMatColor = roundMatRenderer.material.color;
+        roundMatColor.a = alphaValue;
+        roundMatRenderer.material.color = roundMatColor;
+        
+    }
 }
