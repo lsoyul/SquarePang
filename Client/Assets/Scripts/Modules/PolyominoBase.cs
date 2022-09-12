@@ -50,6 +50,7 @@ public class PolyominoBase : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         AllRelativePosIndicesList.Add(ShapeByRelative90);
         AllRelativePosIndicesList.Add(ShapeByRelative180);
         AllRelativePosIndicesList.Add(ShapeByRelative270);
+
     }
 
     public List<relativePosIndex> GetRelativePosIndices()
@@ -80,7 +81,7 @@ public class PolyominoBase : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         Rotation = GetRotation();
     }
 
-    PolyominoRot GetRotation()
+    public PolyominoRot GetRotation()
     {
         if (Mathf.Approximately(this.transform.localRotation.eulerAngles.z, 0f)) return PolyominoRot.Rot0;
         else if (Mathf.Approximately(this.transform.localRotation.eulerAngles.z, 90f)) return PolyominoRot.Rot90;

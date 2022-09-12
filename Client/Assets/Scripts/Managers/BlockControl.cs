@@ -303,7 +303,7 @@ public class BlockControl : MonoBehaviour
             int breakCount = 0;
             foreach (BlockSlot blockSlot in fitSlots)
             {
-                blockSlot.PutBlock(targetPolyomino.blocks[index++]);
+                blockSlot.PutBlock(targetPolyomino.blocks[index++], targetPolyomino.GetRotation());
 
                 if (blockSlot.curBlock != null) putCount++;
                 else breakCount++;

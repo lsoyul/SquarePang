@@ -21,6 +21,10 @@ public class TEST_ChangeShape : MonoBehaviour
         SetVisual();
     }
 
+
+    Vector3 attachRootDefault = new Vector3(0, 0, -1f);
+    Vector3 attachRootPaper = new Vector3(0, 0, -0.1f);
+
     void SetVisual()
     {
         foreach (List<BlockSlot> slotList in GameBoard.GetBlockSlotsOnBoard())
@@ -30,6 +34,16 @@ public class TEST_ChangeShape : MonoBehaviour
                 if (slot.curBlock != null)
                 {
                     slot.curBlock.SetBlockVisual(CurVisual);
+                }
+
+                switch (CurVisual)
+                {
+                    case Block.Visual.Paper:
+                        slot.AttachRoot.transform.localPosition = attachRootPaper;
+                        break;
+                    default:
+                        slot.AttachRoot.transform.localPosition = attachRootDefault;
+                        break;
                 }
             }
         }
