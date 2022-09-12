@@ -40,6 +40,9 @@ public class BlockControl : MonoBehaviour
         PointerManager.onMovePolyomino += OnMovePolyomino;
 
         GameBoard.onInitBoard += OnInitBoard;
+
+        BlockEffector.onStartReleasePolyomino += OnStartReleasePolyomino;
+        BlockEffector.onEndReleasePoloymino += OnEndReleasePolyomino;
     }
 
     private void OnDestroy()
@@ -49,6 +52,9 @@ public class BlockControl : MonoBehaviour
         PointerManager.onMovePolyomino -= OnMovePolyomino;
 
         GameBoard.onInitBoard -= OnInitBoard;
+
+        BlockEffector.onStartReleasePolyomino -= OnStartReleasePolyomino;
+        BlockEffector.onEndReleasePoloymino -= OnEndReleasePolyomino;
     }
 
     private void Start()
@@ -298,6 +304,11 @@ public class BlockControl : MonoBehaviour
 
             // ======= Possible to put ======
 
+            List<BlockSlot> fitSlotsForEffect = fitSlots;
+            GameObject targetPolyominoForEffect = Instantiate(targetPolyomino.gameObject);
+            targetPolyominoForEffect.transform.position = targetPolyomino.transform.position;
+
+
             int index = 0;
             int putCount = 0;
             int breakCount = 0;
@@ -311,6 +322,8 @@ public class BlockControl : MonoBehaviour
 
             Destroy(targetPolyomino.transform.parent.gameObject);
 
+            BlockEffector.Instance.StartReleasePolyomino(fitSlots, targetPolyominoForEffect);
+
             onSuccessReleaseOnGameBoard?.Invoke(fitSlots, putCount, breakCount);
 
             return true;
@@ -318,5 +331,17 @@ public class BlockControl : MonoBehaviour
 
         return false;
     }
+
+    // Effector
+    void OnStartReleasePolyomino(List<BlockSlot> fitSlots, PolyominoBase effectObj)
+    {
+
+    }
+
+    void OnEndReleasePolyomino()
+    {
+        //onSuccessReleaseOnGameBoard?.Invoke(fitSlots, putCount, breakCount);
+    }
+
 
 }
