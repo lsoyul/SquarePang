@@ -1,4 +1,4 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -67,7 +67,7 @@ public class BlockControl : MonoBehaviour
     float screenPosGrabOffsetRatio = 200f / 1920f;
     private Vector2 screenPosGrabOffset = new Vector3(0f, 200f);
 
-    float grabHeight = 2f;
+    float grabHeight = 3f;
 
     void OnGrabPolyomino(PolyominoBase targetPolyomino, PointerEventData eventData)
     {
@@ -294,6 +294,9 @@ public class BlockControl : MonoBehaviour
                 }
             }
             else GameBoard.RemainBreakerCount++;
+
+
+            // ======= Possible to put ======
 
             int index = 0;
             int putCount = 0;
