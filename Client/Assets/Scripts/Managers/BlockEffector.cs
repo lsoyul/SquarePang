@@ -110,12 +110,18 @@ public class BlockEffector : MonoBehaviour
 
         Destroy(effectObj.gameObject);
 
-        foreach (BlockSlot slot in realSlots)
+        for (int i = 0; i < realSlots.Count; i++)
         {
-            if (slot.curBlock != null)
+            if (realSlots[i].curBlock != null)
             {
-                slot.curBlock.gameObject.SetActive(true);
-                slot.ShakeBoard();
+                realSlots[i].curBlock.gameObject.SetActive(true);
+                realSlots[i].ShakeBoard();
+            }
+
+            if (realSlots[i].curBlock == null && fakeSlots[i].curBlock != null)
+            {
+                // Block Crash!
+                ParticleEffector.PlayEffect(ParticleEffector.EffectName.Crack, realSlots[i].AttachRoot.transform.position, Quaternion.identity);
             }
         }
 
