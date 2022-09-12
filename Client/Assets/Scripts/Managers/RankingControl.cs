@@ -93,7 +93,7 @@ public class RankingControl : MonoBehaviour
             if ((GameBoard.CurGameMode == GameStatics.GameMode.Sprint && gameEndType == GameStatics.GameEndType.SprintFinish)
                 || (GameBoard.CurGameMode == GameStatics.GameMode.Endless && gameEndType == GameStatics.GameEndType.GameOver))
             {
-                ReportScore(GameBoard.CurGameMode, GameBoard.Score_MadeBlocks);
+                ReportScore(GameBoard.CurGameMode, GameBoard.ResultScore);
             }
         }
     }

@@ -33,7 +33,7 @@ public class UI_GameOver : MonoBehaviour
     {
         gameOverTextRoot.SetActive(true);
         gameOverText.GetComponent<TMPro.TextMeshProEffect>().Play();
-        gameOverScoreText.text = GameBoard.Score_MadeBlocks.ToString();
+        gameOverScoreText.text = GameBoard.ResultScore.ToString();
         gameOverScoreText.GetComponent<TMPro.TextMeshProEffect>().Play();
     }
 

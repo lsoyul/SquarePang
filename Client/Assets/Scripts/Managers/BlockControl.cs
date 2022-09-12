@@ -23,6 +23,7 @@ public class BlockControl : MonoBehaviour
 
     public static Action onInitBlockControls;
     public static Action onFinishReleasePolyomino;
+    public static Action<List<BlockSlot>, int, int> onSuccessReleaseOnGameBoard; // <Released BlockSlot List, Put count, Break count>
     public static Action<List<BlockSlot>> onImpossiblePutBlockByBreakerCount;
 
     private bool isGrabbing = false;
@@ -295,12 +296,19 @@ public class BlockControl : MonoBehaviour
             else GameBoard.RemainBreakerCount++;
 
             int index = 0;
+            int putCount = 0;
+            int breakCount = 0;
             foreach (BlockSlot blockSlot in fitSlots)
             {
                 blockSlot.PutBlock(targetPolyomino.blocks[index++]);
+
+                if (blockSlot.curBlock != null) putCount++;
+                else breakCount++;
             }
 
             Destroy(targetPolyomino.transform.parent.gameObject);
+
+            onSuccessReleaseOnGameBoard?.Invoke(fitSlots, putCount, breakCount);
 
             return true;
         }

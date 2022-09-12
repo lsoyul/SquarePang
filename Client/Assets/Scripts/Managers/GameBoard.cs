@@ -18,7 +18,7 @@ public class GameBoard : MonoBehaviour
     public static int CurBoardWidth = BoardStatics.BOARD_WIDTH_MIN;
     public static int CurBoardHeight = BoardStatics.BOARD_HEIGHT_MIN;
 
-    public static int Score_MadeBlocks = 0;
+    public static int ResultScore = 0;
     public static int RemainBreakerCount = 0;
 
     public static bool useBreakerScoreMultiply = true;
@@ -56,11 +56,13 @@ public class GameBoard : MonoBehaviour
     private void Awake()
     {
         BlockControl.onFinishReleasePolyomino += OnFinishReleasePolyomino;
+        BlockControl.onSuccessReleaseOnGameBoard += OnSuccessReleaseOnGameBoard;
     }
 
     private void OnDestroy()
     {
         BlockControl.onFinishReleasePolyomino -= OnFinishReleasePolyomino;
+        BlockControl.onSuccessReleaseOnGameBoard -= OnSuccessReleaseOnGameBoard;
     }
 
     private void Start()
@@ -70,6 +72,17 @@ public class GameBoard : MonoBehaviour
         matchSquareSizes.Add(5);
         matchSquareSizes.Add(6);
         matchSquareSizes.Add(7);
+    }
+
+    void OnSuccessReleaseOnGameBoard(List<BlockSlot> releaseSlotList, int putCount, int breakCount)
+    {
+        int curScore = 0;
+        curScore += putCount;
+        curScore += breakCount * 4;
+
+        ResultScore += curScore;
+
+        onChangeScore(curScore, ResultScore);
     }
 
     void OnFinishReleasePolyomino()
@@ -93,7 +106,7 @@ public class GameBoard : MonoBehaviour
 
         if (isCleanBoard) curScore *= 2;
 
-        Score_MadeBlocks += curScore;
+        ResultScore += curScore;
 
         if (madeSlotList.Count > 0)
         {
@@ -107,7 +120,7 @@ public class GameBoard : MonoBehaviour
         }
 
 
-        onChangeScore?.Invoke(curScore, Score_MadeBlocks);
+        onChangeScore?.Invoke(curScore, ResultScore);
 
         // Check Game Finish (if sprintMode)
         if (CurGameMode == GameMode.Sprint)
@@ -216,7 +229,7 @@ public class GameBoard : MonoBehaviour
     public void InitGameBoardBase(int boardWidth, int boardHeight)
     {
         sprintModeCurMadeSquareCount = 0;
-        Score_MadeBlocks = 0;
+        ResultScore = 0;
         RemainBreakerCount = 0;
 
         CurBoardWidth = boardWidth;
@@ -251,7 +264,7 @@ public class GameBoard : MonoBehaviour
 
         ValidReleaseMaxDist = Vector2.Distance(Camera.main.WorldToScreenPoint(blockSlots[0][1].transform.position), Camera.main.WorldToScreenPoint(blockSlots[0][2].transform.position));
 
-        onChangeScore?.Invoke(0, Score_MadeBlocks);
+        onChangeScore?.Invoke(0, ResultScore);
         onInitBoard?.Invoke();
     }
 
@@ -425,4 +438,5 @@ public class GameBoard : MonoBehaviour
 
         return true;
     }
+
 }
