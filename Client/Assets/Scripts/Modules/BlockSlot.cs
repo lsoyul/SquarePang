@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 using static GameStatics;
 
 public class BlockSlot : MonoBehaviour
 {
     public GameObject AttachRoot;
+    public DOTweenAnimation putAnimation;
 
     public int ix = 0;
     public int iy = 0;
@@ -52,6 +54,7 @@ public class BlockSlot : MonoBehaviour
                     break;
             }
             curBlock.transform.localRotation = Quaternion.Euler(0f, 0f, zRot);
+
         }
 
         return this;
@@ -64,6 +67,11 @@ public class BlockSlot : MonoBehaviour
             Destroy(curBlock.gameObject);
             curBlock = null;
         }
+    }
+
+    public void ShakeBoard()
+    {
+        putAnimation.DOPlayForward();
     }
 
     private void Awake()

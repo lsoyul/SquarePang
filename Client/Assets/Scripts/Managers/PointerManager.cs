@@ -28,6 +28,7 @@ public class PointerManager : MonoBehaviour
     void OnPointerDown(PolyominoBase targetPolyomino, PointerEventData eventData)
     {
         if (targetPolyomino.IsGrabable == false) return;
+        if (BlockEffector.isEffectTime == true) return;
 
         CurGrabbingPolyomino = targetPolyomino;
         isGrabbingPolyomino = true;

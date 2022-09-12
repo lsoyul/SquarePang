@@ -29,22 +29,23 @@ public class BlockEffector : MonoBehaviour
         }
     }
 
-    public void StartReleasePolyomino(List<BlockSlot> fitSlots, GameObject polyominoForEffect)
+    public void StartReleasePolyomino(List<BlockSlot> realSlots, List<BlockSlot> fakeSlots, GameObject polyominoForEffect)
     {
         PolyominoBase targetPolyomino = polyominoForEffect.GetComponent<PolyominoBase>();
         if (targetPolyomino == null) return;
 
         if (releaseIE != null) StopCoroutine(releaseIE);
 
-        releaseIE = IEReleasePolyomino(fitSlots, targetPolyomino);
+        releaseIE = IEReleasePolyomino(realSlots, fakeSlots, targetPolyomino);
 
         StartCoroutine(releaseIE);
     }
 
 
-    IEnumerator IEReleasePolyomino(List<BlockSlot> fitSlots, PolyominoBase effectObj)
+    IEnumerator IEReleasePolyomino(List<BlockSlot> realSlots, List<BlockSlot> fakeSlots, PolyominoBase effectObj)
     {
-        onStartReleasePolyomino?.Invoke(fitSlots, effectObj);
+        isEffectTime = true;
+        onStartReleasePolyomino?.Invoke(realSlots, effectObj);
 
         float timer = 0f;
 
@@ -52,7 +53,7 @@ public class BlockEffector : MonoBehaviour
         List<Vector3> moveTarget = new List<Vector3>();
         List<Vector3> fallTarget = new List<Vector3>();
 
-        foreach (BlockSlot slot in fitSlots)
+        foreach (BlockSlot slot in realSlots)
         {
             if (slot.curBlock != null) slot.curBlock.gameObject.SetActive(false);
 
@@ -60,11 +61,16 @@ public class BlockEffector : MonoBehaviour
             fallTarget.Add(slot.AttachRoot.transform.position);
         }
 
+        foreach (BlockSlot fakeSlot in fakeSlots)
+        {
+            fakeSlot.gameObject.SetActive(true);
+        }
+
         while (timer <= ReleaseOnBoard_MoveToPos_Duration)
         {
             timer += Time.deltaTime;
 
-            for (int i = 0; i < fitSlots.Count; i++)
+            for (int i = 0; i < realSlots.Count; i++)
             {
                 effectBlocks[i].transform.position =
                     Vector3.Lerp(effectBlocks[i].transform.position, moveTarget[i], ReleaseOnBoard_MoveToPos.Evaluate(timer / ReleaseOnBoard_MoveToPos_Duration));
@@ -73,7 +79,7 @@ public class BlockEffector : MonoBehaviour
             yield return null;
         }
 
-        for (int i = 0; i < fitSlots.Count; i++)
+        for (int i = 0; i < realSlots.Count; i++)
         {
             effectBlocks[i].transform.position = moveTarget[i];
         }
@@ -86,7 +92,7 @@ public class BlockEffector : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            for (int i = 0; i < fitSlots.Count; i++)
+            for (int i = 0; i < realSlots.Count; i++)
             {
                 effectBlocks[i].transform.position =
                     Vector3.Lerp(effectBlocks[i].transform.position, fallTarget[i], ReleaseOnBoard_FallDown.Evaluate(timer / ReleaseOnBoard_FallDown_Duration));
@@ -95,7 +101,7 @@ public class BlockEffector : MonoBehaviour
             yield return null;
         }
 
-        for (int i = 0; i < fitSlots.Count; i++)
+        for (int i = 0; i < realSlots.Count; i++)
         {
             effectBlocks[i].transform.position = fallTarget[i];
         }
@@ -104,11 +110,22 @@ public class BlockEffector : MonoBehaviour
 
         Destroy(effectObj.gameObject);
 
-        foreach (BlockSlot slot in fitSlots)
+        foreach (BlockSlot slot in realSlots)
         {
-            if (slot.curBlock != null) slot.curBlock.gameObject.SetActive(true);
+            if (slot.curBlock != null)
+            {
+                slot.curBlock.gameObject.SetActive(true);
+                slot.ShakeBoard();
+            }
         }
 
+        foreach (BlockSlot fakeSlot in fakeSlots)
+        {
+            fakeSlot.gameObject.SetActive(false);
+            Destroy(fakeSlot.gameObject);
+        }
+
+        isEffectTime = false;
         onEndReleasePoloymino?.Invoke();
     }
 }

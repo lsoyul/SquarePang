@@ -96,6 +96,7 @@ public class BlockControl : MonoBehaviour
 
     void OnReleasePolyomino(PolyominoBase targetPolyomino)
     {
+        isGrabbing = false;
         SetPolyominoAlpha(targetPolyomino, 1f);
 
         if (CheckIsOnGameBoard(targetPolyomino))
@@ -107,10 +108,9 @@ public class BlockControl : MonoBehaviour
         {
             //Debug.Log("==OnReleasePolyomino: " + targetPolyomino);
             PointerManager.CurGrabbingPolyomino.transform.localPosition = Vector3.zero;
+        onFinishReleasePolyomino?.Invoke();
         }
 
-        isGrabbing = false;
-        onFinishReleasePolyomino?.Invoke();
     }
 
     void OnMovePolyomino(Vector2 moveScreenPos)
@@ -265,6 +265,9 @@ public class BlockControl : MonoBehaviour
     }
 
 
+    static List<BlockSlot> beforeSlots;
+    static int beforePutCount;
+    static int beforeBreakCount;
 
     static bool CheckIsOnGameBoard(PolyominoBase targetPolyomino)
     {
@@ -304,14 +307,23 @@ public class BlockControl : MonoBehaviour
 
             // ======= Possible to put ======
 
-            List<BlockSlot> fitSlotsForEffect = fitSlots;
+            List<BlockSlot> beforeFitSlots = new List<BlockSlot>();
             GameObject targetPolyominoForEffect = Instantiate(targetPolyomino.gameObject);
+            
             targetPolyominoForEffect.transform.position = targetPolyomino.transform.position;
-
 
             int index = 0;
             int putCount = 0;
             int breakCount = 0;
+
+            foreach (BlockSlot slot in fitSlots)
+            {
+                GameObject effectObj = Instantiate(slot.gameObject);
+                effectObj.transform.position = slot.gameObject.transform.position;
+
+                beforeFitSlots.Add(effectObj.GetComponent<BlockSlot>());
+            }
+
             foreach (BlockSlot blockSlot in fitSlots)
             {
                 blockSlot.PutBlock(targetPolyomino.blocks[index++], targetPolyomino.GetRotation());
@@ -322,9 +334,15 @@ public class BlockControl : MonoBehaviour
 
             Destroy(targetPolyomino.transform.parent.gameObject);
 
-            BlockEffector.Instance.StartReleasePolyomino(fitSlots, targetPolyominoForEffect);
+            beforeSlots = fitSlots;
+            beforePutCount = putCount;
+            beforeBreakCount = breakCount;
 
-            onSuccessReleaseOnGameBoard?.Invoke(fitSlots, putCount, breakCount);
+
+            BlockEffector.Instance.StartReleasePolyomino(fitSlots, beforeFitSlots, targetPolyominoForEffect);
+
+            //onSuccessReleaseOnGameBoard?.Invoke(fitSlots, putCount, breakCount);
+            //onFinishReleasePolyomino?.Invoke();
 
             return true;
         }
@@ -332,7 +350,7 @@ public class BlockControl : MonoBehaviour
         return false;
     }
 
-    // Effector
+    // ========== Use Effector
     void OnStartReleasePolyomino(List<BlockSlot> fitSlots, PolyominoBase effectObj)
     {
 
@@ -340,7 +358,8 @@ public class BlockControl : MonoBehaviour
 
     void OnEndReleasePolyomino()
     {
-        //onSuccessReleaseOnGameBoard?.Invoke(fitSlots, putCount, breakCount);
+        onSuccessReleaseOnGameBoard?.Invoke(beforeSlots, beforePutCount, beforeBreakCount);
+        onFinishReleasePolyomino?.Invoke();
     }
 
 

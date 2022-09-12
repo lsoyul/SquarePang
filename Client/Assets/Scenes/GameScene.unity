@@ -11475,8 +11475,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -11493,7 +11493,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ReleaseOnBoard_MoveToPos_Duration: 0.5
+  ReleaseOnBoard_MoveToPos_Duration: 0.15
   ReleaseOnBoard_FallDown:
     serializedVersion: 2
     m_Curve:
@@ -11518,7 +11518,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ReleaseOnBoard_FallDown_Duration: 0.5
+  ReleaseOnBoard_FallDown_Duration: 0.01
 --- !u!1 &1721763405
 GameObject:
   m_ObjectHideFlags: 0
@@ -12752,7 +12752,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.4
+  m_Intensity: 1.7
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -13257,43 +13257,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2283756428238171657, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2283756428238171657, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2283756428238171657, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2283756428238171657, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210952580900198352, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
-      propertyPath: m_Color.b
-      value: 0.5137255
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210952580900198352, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
-      propertyPath: m_Color.g
-      value: 0.18039216
-      objectReference: {fileID: 0}
-    - target: {fileID: 4210952580900198352, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
-      propertyPath: m_Color.r
-      value: 0.23137257
-      objectReference: {fileID: 0}
     - target: {fileID: 5651408199367047810, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
       propertyPath: m_Name
       value: BlockSlotBase
       objectReference: {fileID: 0}
-    - target: {fileID: 5651408199367047810, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7203181778553698970, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e352e6bd6fa815f4caa4f2cd1da7ca09, type: 3}
 --- !u!114 &6406976919373281141 stripped
 MonoBehaviour:
