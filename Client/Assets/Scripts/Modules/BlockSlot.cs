@@ -71,7 +71,8 @@ public class BlockSlot : MonoBehaviour
 
     public void ShakeBoard()
     {
-        putAnimation.DOPlayForward();
+        putAnimation.DORestart();
+        //putAnimation.DOPlayForward();
     }
 
     private void Awake()
