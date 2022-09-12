@@ -84,4 +84,6 @@ public class Block : MonoBehaviour
         roundMatColor.a = alphaValue;
         roundMatRenderer.material.color = roundMatColor;
     }
+
+
 }

@@ -7,11 +7,16 @@ using UnityEngine.EventSystems;
 public class BlockReleaseGuide : MonoBehaviour
 {
     public List<GameObject> guideObj;
+    private List<SpriteRenderer> guideRenderer = new List<SpriteRenderer>();
 
     bool guideOn = false;
     PolyominoBase curGrabObj;
 
-    Vector3 guideObjOffset = new Vector3(0, 0, -0.1f);
+    Vector3 guideObjOffset_Release = new Vector3(0, 0, 0);
+    Vector3 guideObjOffset_Break = new Vector3(0, 0, -1f);
+
+    public Color color_guideRelease = Color.green;
+    public Color color_guideBreak = Color.red;
     
     private void Awake()
     {
@@ -19,6 +24,16 @@ public class BlockReleaseGuide : MonoBehaviour
         PointerManager.onReleasePolyomino += OnReleasePolyomino;
 
         GuideObjActive(false, guideObj.Count);
+
+        foreach (GameObject obj in guideObj)
+        {
+            SpriteRenderer newRenderer = obj.GetComponent<SpriteRenderer>();
+            if (newRenderer != null)
+            {
+                //newRenderer.sortingOrder = 1;
+                guideRenderer.Add(newRenderer);
+            }
+        }
     }
 
     private void OnDestroy()
@@ -30,16 +45,13 @@ public class BlockReleaseGuide : MonoBehaviour
     private void OnGrabPolyomino(PolyominoBase polyominoBase, PointerEventData eventData)
     {
         guideOn = true;
-
         curGrabObj = polyominoBase;
     }
 
     private void OnReleasePolyomino(PolyominoBase polyominoBase)
     {
         guideOn = false;
-
         curGrabObj = null;
-
         GuideObjActive(false, guideObj.Count);
     }
 
@@ -54,9 +66,18 @@ public class BlockReleaseGuide : MonoBehaviour
             {
                 GuideObjActive(true, fitSlots.Count);
 
-                for(int i = 0; i < fitSlots.Count; i++)
+                for (int i = 0; i < fitSlots.Count; i++)
                 {
-                    guideObj[i].transform.position = fitSlots[i].transform.position + guideObjOffset;
+                    if (fitSlots[i].curBlock == null)
+                    {
+                        guideRenderer[i].color = color_guideRelease;
+                        guideObj[i].transform.position = fitSlots[i].transform.position + guideObjOffset_Release;
+                    }
+                    else
+                    {
+                        guideRenderer[i].color = color_guideBreak;
+                        guideObj[i].transform.position = fitSlots[i].transform.position + guideObjOffset_Break;
+                    }
                 }
             }
             else
