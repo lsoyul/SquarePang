@@ -13,7 +13,7 @@ public class BlockReleaseGuide : MonoBehaviour
     PolyominoBase curGrabObj;
 
     Vector3 guideObjOffset_Release = new Vector3(0, 0, 0);
-    Vector3 guideObjOffset_Break = new Vector3(0, 0, -1f);
+    Vector3 guideObjOffset_Break = new Vector3(0, 0, -0.1f);
 
     public Color color_guideRelease = Color.green;
     public Color color_guideBreak = Color.red;

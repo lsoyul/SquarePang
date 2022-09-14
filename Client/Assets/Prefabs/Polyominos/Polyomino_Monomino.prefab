@@ -49,6 +49,7 @@ MonoBehaviour:
   SoftBlocks: {fileID: 4009681625828666685}
   RoundBlocks: {fileID: 9209814609682827022}
   PaperBlocks: {fileID: 6889370233473241395}
+  CurVisual: 0
 --- !u!1 &2995884987382820444
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024796802708001390, guid: 6c95326b41f4d4d12b789ed4ef3c4c50, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4364309039345666260, guid: 6c95326b41f4d4d12b789ed4ef3c4c50, type: 3}
       propertyPath: m_RootOrder
@@ -342,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1421875612548168894, guid: 9462cb80178124f6a85d25f87ace3328, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1797029686355240452, guid: 9462cb80178124f6a85d25f87ace3328, type: 3}
       propertyPath: m_RootOrder

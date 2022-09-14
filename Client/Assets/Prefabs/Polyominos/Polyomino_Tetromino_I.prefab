@@ -119,6 +119,7 @@ MonoBehaviour:
   SoftBlocks: {fileID: 3767416125579110375}
   RoundBlocks: {fileID: 1230867898644709788}
   PaperBlocks: {fileID: 6283713327389791000}
+  CurVisual: 0
 --- !u!1 &4084328638143035803
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +186,7 @@ Transform:
   m_Children:
   - {fileID: 7291785738984669671}
   m_Father: {fileID: 8581851968861520007}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8824009618350073624
 MonoBehaviour:
@@ -203,6 +204,7 @@ MonoBehaviour:
   SoftBlocks: {fileID: 8477847351229658075}
   RoundBlocks: {fileID: 6881650198381758128}
   PaperBlocks: {fileID: 2924968808516774474}
+  CurVisual: 0
 --- !u!1 &7631649766158063829
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +254,7 @@ MonoBehaviour:
   SoftBlocks: {fileID: 7238852487099823873}
   RoundBlocks: {fileID: 4156392609370005886}
   PaperBlocks: {fileID: 5340729852659721428}
+  CurVisual: 0
 --- !u!1 &7897813566362086577
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +321,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8581851968861520007}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8581851968742349769
 MonoBehaviour:
@@ -336,6 +339,7 @@ MonoBehaviour:
   SoftBlocks: {fileID: 0}
   RoundBlocks: {fileID: 0}
   PaperBlocks: {fileID: 0}
+  CurVisual: 0
 --- !u!212 &8581851968742349774
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -451,7 +455,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8581851968861520007}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8581851969993270422
 MonoBehaviour:
@@ -469,6 +473,7 @@ MonoBehaviour:
   SoftBlocks: {fileID: 0}
   RoundBlocks: {fileID: 0}
   PaperBlocks: {fileID: 0}
+  CurVisual: 0
 --- !u!212 &8581851969993270423
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -552,7 +557,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8581851968861520007}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8581851970010803555
 MonoBehaviour:
@@ -570,6 +575,7 @@ MonoBehaviour:
   SoftBlocks: {fileID: 0}
   RoundBlocks: {fileID: 0}
   PaperBlocks: {fileID: 0}
+  CurVisual: 0
 --- !u!212 &8581851970010803552
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -653,7 +659,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8581851968861520007}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8716675513935517149
 MonoBehaviour:
@@ -671,6 +677,7 @@ MonoBehaviour:
   SoftBlocks: {fileID: 0}
   RoundBlocks: {fileID: 0}
   PaperBlocks: {fileID: 0}
+  CurVisual: 0
 --- !u!212 &8716675513935517148
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -772,6 +779,7 @@ MonoBehaviour:
   SoftBlocks: {fileID: 2807129273234173204}
   RoundBlocks: {fileID: 509028591022037144}
   PaperBlocks: {fileID: 549695065844685622}
+  CurVisual: 0
 --- !u!1001 &503670340805443025
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class TEST_ChangeShape : MonoBehaviour
     }
 
 
-    Vector3 attachRootDefault = new Vector3(0, 0, -1f);
+    Vector3 attachRootDefault = new Vector3(0, 0, -0.1f);
     Vector3 attachRootPaper = new Vector3(0, 0, -0.1f);
 
     void SetVisual()
