@@ -9432,7 +9432,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 1
   ForWords: 
-  IsFinished: 0
+  IsFinished: 1
 --- !u!114 &1394424071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11590,7 +11590,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   MadeSquareEffect_Duration: 0.4
-  MadeSquareEffect_TargetEmission: 2
+  MadeSquareEffect_TargetEmission: 1.5
 --- !u!1 &1721763405
 GameObject:
   m_ObjectHideFlags: 0

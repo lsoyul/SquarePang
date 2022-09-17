@@ -104,7 +104,8 @@ public class Block : MonoBehaviour
     public void SetEmission(float emissionValue)
     {
         Color baseColor = hardMatRenderer.material.color;
-        hardMatRenderer.material.SetVector("_EmissionColor", baseColor * emissionValue);
+        //hardMatRenderer.material.SetVector("_EmissionColor", baseColor * emissionValue);
+        hardMatRenderer.material.SetVector("_EmissionColor", Color.white * emissionValue);
     }
 
 }
