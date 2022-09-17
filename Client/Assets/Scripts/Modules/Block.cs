@@ -13,10 +13,10 @@ public class Block : MonoBehaviour
         END = 4,
     }
 
-    public GameObject HardBlocks;
-    public GameObject SoftBlocks;
-    public GameObject RoundBlocks;
-    public GameObject PaperBlocks;
+    public GameObject HardBlock;
+    public GameObject SoftBlock;
+    public GameObject RoundBlock;
+    public GameObject PaperBlock;
 
     public Visual CurVisual;
 
@@ -38,10 +38,10 @@ public class Block : MonoBehaviour
         }
 
 
-        hardMatRenderer = HardBlocks.GetComponent<Renderer>();
-        softMatRenderer = SoftBlocks.GetComponent<Renderer>();
-        paperMatRenderer = PaperBlocks.GetComponent<Renderer>();
-        roundMatRenderer = RoundBlocks.GetComponent<Renderer>();
+        hardMatRenderer = HardBlock.GetComponent<Renderer>();
+        softMatRenderer = SoftBlock.GetComponent<Renderer>();
+        paperMatRenderer = PaperBlock.GetComponent<Renderer>();
+        roundMatRenderer = RoundBlock.GetComponent<Renderer>();
 
         baseMatColor = hardMatRenderer.material.color;
     }
@@ -50,28 +50,28 @@ public class Block : MonoBehaviour
     {
         CurVisual = targetVisual;
 
-        HardBlocks.SetActive(false);
+        HardBlock.SetActive(false);
         
-        SoftBlocks.SetActive(false);
+        SoftBlock.SetActive(false);
         
-        RoundBlocks.SetActive(false);
+        RoundBlock.SetActive(false);
         
-        PaperBlocks.SetActive(false);
+        PaperBlock.SetActive(false);
         
 
         switch (targetVisual)
         {
             case Visual.Hard:
-                HardBlocks.SetActive(true);
+                HardBlock.SetActive(true);
                 break;
             case Visual.Soft:
-                SoftBlocks.SetActive(true);
+                SoftBlock.SetActive(true);
                 break;
             case Visual.Round:
-                RoundBlocks.SetActive(true);
+                RoundBlock.SetActive(true);
                 break;
             case Visual.Paper:
-                PaperBlocks.SetActive(true);
+                PaperBlock.SetActive(true);
                 break;
             default:
                 break;
@@ -108,4 +108,16 @@ public class Block : MonoBehaviour
         hardMatRenderer.material.SetVector("_EmissionColor", Color.white * emissionValue);
     }
 
+    public GameObject GetBlockObj()
+    {
+        switch (CurVisual)
+        {
+            case Visual.Hard: return HardBlock;
+            case Visual.Paper: return PaperBlock;
+            case Visual.Round: return RoundBlock;
+            case Visual.Soft: return SoftBlock;
+            default:
+                return HardBlock;
+        }
+    }
 }

@@ -4112,6 +4112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectList:
   - {fileID: 1544299566578556, guid: fadeff1556f1a4438a522baa14f42f0d, type: 3}
+  - {fileID: 105608, guid: 59c8eb6e1c7554f5db28bb35566c8f69, type: 3}
 --- !u!4 &533449460
 Transform:
   m_ObjectHideFlags: 0
@@ -9432,7 +9433,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 1
   ForWords: 
-  IsFinished: 1
+  IsFinished: 0
 --- !u!114 &1394424071
 MonoBehaviour:
   m_ObjectHideFlags: 0

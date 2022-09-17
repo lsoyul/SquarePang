@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 7898260737606695435}
-  SoftBlocks: {fileID: 7593581437417506409}
-  RoundBlocks: {fileID: 3893083685816991333}
-  PaperBlocks: {fileID: 5012880082649419603}
+  HardBlock: {fileID: 7898260737606695435}
+  SoftBlock: {fileID: 7593581437417506409}
+  RoundBlock: {fileID: 3893083685816991333}
+  PaperBlock: {fileID: 5012880082649419603}
   CurVisual: 0
 --- !u!1 &93761417337449287
 GameObject:
@@ -165,10 +165,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 9055244990162652929}
-  SoftBlocks: {fileID: 7484180719364615170}
-  RoundBlocks: {fileID: 3198130141523473085}
-  PaperBlocks: {fileID: 4949095637342645462}
+  HardBlock: {fileID: 9055244990162652929}
+  SoftBlock: {fileID: 7484180719364615170}
+  RoundBlock: {fileID: 3198130141523473085}
+  PaperBlock: {fileID: 4949095637342645462}
   CurVisual: 0
 --- !u!1 &5524844953492403981
 GameObject:
@@ -215,10 +215,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 6773702238856217606}
-  SoftBlocks: {fileID: 8803504700676732611}
-  RoundBlocks: {fileID: 2282522134355246226}
-  PaperBlocks: {fileID: 3282196724430157492}
+  HardBlock: {fileID: 6773702238856217606}
+  SoftBlock: {fileID: 8803504700676732611}
+  RoundBlock: {fileID: 2282522134355246226}
+  PaperBlock: {fileID: 3282196724430157492}
   CurVisual: 0
 --- !u!1 &5962565376943645172
 GameObject:
@@ -265,10 +265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 0}
-  SoftBlocks: {fileID: 0}
-  RoundBlocks: {fileID: 0}
-  PaperBlocks: {fileID: 0}
+  HardBlock: {fileID: 0}
+  SoftBlock: {fileID: 0}
+  RoundBlock: {fileID: 0}
+  PaperBlock: {fileID: 0}
   CurVisual: 0
 --- !u!212 &5962565376943645170
 SpriteRenderer:
@@ -367,10 +367,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 0}
-  SoftBlocks: {fileID: 0}
-  RoundBlocks: {fileID: 0}
-  PaperBlocks: {fileID: 0}
+  HardBlock: {fileID: 0}
+  SoftBlock: {fileID: 0}
+  RoundBlock: {fileID: 0}
+  PaperBlock: {fileID: 0}
   CurVisual: 0
 --- !u!212 &5962565376961243141
 SpriteRenderer:
@@ -501,10 +501,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 0}
-  SoftBlocks: {fileID: 0}
-  RoundBlocks: {fileID: 0}
-  PaperBlocks: {fileID: 0}
+  HardBlock: {fileID: 0}
+  SoftBlock: {fileID: 0}
+  RoundBlock: {fileID: 0}
+  PaperBlock: {fileID: 0}
   CurVisual: 0
 --- !u!212 &5962565378883311452
 SpriteRenderer:
@@ -603,10 +603,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 3569610438061064124}
-  SoftBlocks: {fileID: 2967490742520681119}
-  RoundBlocks: {fileID: 5565726218413750041}
-  PaperBlocks: {fileID: 3227418540129723785}
+  HardBlock: {fileID: 3569610438061064124}
+  SoftBlock: {fileID: 2967490742520681119}
+  RoundBlock: {fileID: 5565726218413750041}
+  PaperBlock: {fileID: 3227418540129723785}
   CurVisual: 0
 --- !u!1 &6723961418880047472
 GameObject:
@@ -653,10 +653,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 0}
-  SoftBlocks: {fileID: 0}
-  RoundBlocks: {fileID: 0}
-  PaperBlocks: {fileID: 0}
+  HardBlock: {fileID: 0}
+  SoftBlock: {fileID: 0}
+  RoundBlock: {fileID: 0}
+  PaperBlock: {fileID: 0}
   CurVisual: 0
 --- !u!212 &6723961418880047438
 SpriteRenderer:

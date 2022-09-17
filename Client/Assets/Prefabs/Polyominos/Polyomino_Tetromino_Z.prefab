@@ -80,10 +80,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 6212861651443460987}
-  SoftBlocks: {fileID: 3240362519639911569}
-  RoundBlocks: {fileID: 3651033922604679235}
-  PaperBlocks: {fileID: 7921363458278542629}
+  HardBlock: {fileID: 6212861651443460987}
+  SoftBlock: {fileID: 3240362519639911569}
+  RoundBlock: {fileID: 3651033922604679235}
+  PaperBlock: {fileID: 7921363458278542629}
   CurVisual: 0
 --- !u!1 &1332760083637177025
 GameObject:
@@ -130,10 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 0}
-  SoftBlocks: {fileID: 0}
-  RoundBlocks: {fileID: 0}
-  PaperBlocks: {fileID: 0}
+  HardBlock: {fileID: 0}
+  SoftBlock: {fileID: 0}
+  RoundBlock: {fileID: 0}
+  PaperBlock: {fileID: 0}
   CurVisual: 0
 --- !u!212 &1332760083637177027
 SpriteRenderer:
@@ -264,10 +264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 0}
-  SoftBlocks: {fileID: 0}
-  RoundBlocks: {fileID: 0}
-  PaperBlocks: {fileID: 0}
+  HardBlock: {fileID: 0}
+  SoftBlock: {fileID: 0}
+  RoundBlock: {fileID: 0}
+  PaperBlock: {fileID: 0}
   CurVisual: 0
 --- !u!212 &1332760084922940525
 SpriteRenderer:
@@ -366,10 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 0}
-  SoftBlocks: {fileID: 0}
-  RoundBlocks: {fileID: 0}
-  PaperBlocks: {fileID: 0}
+  HardBlock: {fileID: 0}
+  SoftBlock: {fileID: 0}
+  RoundBlock: {fileID: 0}
+  PaperBlock: {fileID: 0}
   CurVisual: 0
 --- !u!212 &1332760084940535194
 SpriteRenderer:
@@ -468,10 +468,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 297252115839759513}
-  SoftBlocks: {fileID: 5183985660387327405}
-  RoundBlocks: {fileID: 1255544657643299406}
-  PaperBlocks: {fileID: 8002136638901964218}
+  HardBlock: {fileID: 297252115839759513}
+  SoftBlock: {fileID: 5183985660387327405}
+  RoundBlock: {fileID: 1255544657643299406}
+  PaperBlock: {fileID: 8002136638901964218}
   CurVisual: 0
 --- !u!1 &2130744596771407087
 GameObject:
@@ -518,10 +518,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 0}
-  SoftBlocks: {fileID: 0}
-  RoundBlocks: {fileID: 0}
-  PaperBlocks: {fileID: 0}
+  HardBlock: {fileID: 0}
+  SoftBlock: {fileID: 0}
+  RoundBlock: {fileID: 0}
+  PaperBlock: {fileID: 0}
   CurVisual: 0
 --- !u!212 &2130744596771407057
 SpriteRenderer:
@@ -655,10 +655,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 2765652077329912910}
-  SoftBlocks: {fileID: 1936861146214345031}
-  RoundBlocks: {fileID: 5256853677532495929}
-  PaperBlocks: {fileID: 6427441892373589129}
+  HardBlock: {fileID: 2765652077329912910}
+  SoftBlock: {fileID: 1936861146214345031}
+  RoundBlock: {fileID: 5256853677532495929}
+  PaperBlock: {fileID: 6427441892373589129}
   CurVisual: 0
 --- !u!1 &6619087818935233588
 GameObject:
@@ -705,10 +705,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 6739400892060712563}
-  SoftBlocks: {fileID: 3718717098458871563}
-  RoundBlocks: {fileID: 4382949328065339490}
-  PaperBlocks: {fileID: 5286010207140299830}
+  HardBlock: {fileID: 6739400892060712563}
+  SoftBlock: {fileID: 3718717098458871563}
+  RoundBlock: {fileID: 3718717098458871563}
+  PaperBlock: {fileID: 5286010207140299830}
   CurVisual: 0
 --- !u!1 &8171093366334890241
 GameObject:
@@ -1919,11 +1919,6 @@ PrefabInstance:
 --- !u!4 &4006107577173637848 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4649603076302642019, guid: 4f6d172ca7605431cbda9c57e8252aa0, type: 3}
-  m_PrefabInstance: {fileID: 8583360342484738491}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &4382949328065339490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5462134006267331033, guid: 4f6d172ca7605431cbda9c57e8252aa0, type: 3}
   m_PrefabInstance: {fileID: 8583360342484738491}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8747804611834118554

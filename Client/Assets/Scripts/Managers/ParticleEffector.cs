@@ -10,6 +10,7 @@ public class ParticleEffector : MonoBehaviour
     public enum EffectName
     {
         Crack,
+        BlockMade,
     }
 
     private void Awake()

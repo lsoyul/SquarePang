@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068c613d4b8bc4affa874b704b0e07d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HardBlocks: {fileID: 1230395863237038189}
-  SoftBlocks: {fileID: 4009681625828666685}
-  RoundBlocks: {fileID: 9209814609682827022}
-  PaperBlocks: {fileID: 6889370233473241395}
+  HardBlock: {fileID: 1230395863237038189}
+  SoftBlock: {fileID: 4009681625828666685}
+  RoundBlock: {fileID: 9209814609682827022}
+  PaperBlock: {fileID: 6889370233473241395}
   CurVisual: 0
 --- !u!1 &2995884987382820444
 GameObject:

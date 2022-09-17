@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System;
+using DG.Tweening;
 
 public class BlockEffector : MonoBehaviour
 {
@@ -157,6 +158,23 @@ public class BlockEffector : MonoBehaviour
         isEffectTime = true;
         onStartMadeSquareEffect?.Invoke(madeSlotList);
 
+        foreach (List<BlockSlot> slotList in madeSlotList)
+        {
+            foreach (BlockSlot slot in slotList)
+            {
+                if (slot.curBlock != null)
+                {
+                    DOTweenAnimation tweener = slot.curBlock.GetBlockObj().GetComponent<DOTweenAnimation>();
+                    if (tweener != null)
+                    {
+                        tweener.duration = MadeSquareEffect_Duration;
+                        tweener.DORestart();
+                    }
+
+                }
+            }
+        }
+
         float timer = 0f;
 
         while (timer <= MadeSquareEffect_Duration)
@@ -184,6 +202,8 @@ public class BlockEffector : MonoBehaviour
                 if (slot.curBlock != null)
                 {
                     slot.curBlock.SetEmission(MadeSquareEffect_TargetEmission);
+
+                    ParticleEffector.PlayEffect(ParticleEffector.EffectName.BlockMade, slot.curBlock.transform.position, Quaternion.identity);
                 }
             }
         }
