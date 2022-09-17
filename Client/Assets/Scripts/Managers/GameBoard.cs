@@ -37,7 +37,7 @@ public class GameBoard : MonoBehaviour
 
     // =============== private
     private static List<List<BlockSlot>> blockSlots = new List<List<BlockSlot>>();
-    private List<int> matchSquareSizes = new List<int>();
+    private static List<int> matchSquareSizes = new List<int>();
 
 
     [Header("====TEST====")]
@@ -87,7 +87,7 @@ public class GameBoard : MonoBehaviour
 
     void OnFinishReleasePolyomino()
     {
-        List<List<BlockSlot>> madeSlotList = CheckMatchSqares();
+        List<List<BlockSlot>> madeSlotList = GetMatchSqares();
 
         int curScore = 0;
         foreach (List<BlockSlot> madeSlots in madeSlotList)
@@ -341,7 +341,7 @@ public class GameBoard : MonoBehaviour
         return resultSlots;
     }
 
-    List<List<BlockSlot>> CheckMatchSqares()
+    public static List<List<BlockSlot>> GetMatchSqares()
     {
         List<List<BlockSlot>> madeSlotList = new List<List<BlockSlot>>();
         foreach (int squareSize in matchSquareSizes)
@@ -368,7 +368,7 @@ public class GameBoard : MonoBehaviour
         return madeSlotList;
     }
 
-    List<BlockSlot> GetMatchSlots(int x, int y, int squareSize)
+    static List<BlockSlot> GetMatchSlots(int x, int y, int squareSize)
     {
         List<BlockSlot> madeSlots = new List<BlockSlot>();
         for (int checkY = y; checkY < y+squareSize; checkY++)
@@ -386,7 +386,7 @@ public class GameBoard : MonoBehaviour
 
     }
 
-    bool CheckEdgeOfSquare(int x, int y, int squareSize)
+    static bool CheckEdgeOfSquare(int x, int y, int squareSize)
     {
         // Above of Square
         for (int checkX = x; checkX < x + squareSize; checkX++)

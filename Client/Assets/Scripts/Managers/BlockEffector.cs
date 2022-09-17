@@ -13,12 +13,22 @@ public class BlockEffector : MonoBehaviour
     public static Action<List<BlockSlot>, PolyominoBase> onStartReleasePolyomino;
     public static Action onEndReleasePoloymino;
 
-    IEnumerator releaseIE;
+    public static Action<List<List<BlockSlot>>> onStartMadeSquareEffect;
+    public static Action<List<List<BlockSlot>>> onEndMadeSquareEffect;
 
+    [Header("== Release On Board ==")]
     public AnimationCurve ReleaseOnBoard_MoveToPos;
     public float ReleaseOnBoard_MoveToPos_Duration = 0.5f;
     public AnimationCurve ReleaseOnBoard_FallDown;
     public float ReleaseOnBoard_FallDown_Duration = 0.5f;
+
+    [Header("== Made Square Effect ==")]
+    public AnimationCurve MadeSquareEffect;
+    public float MadeSquareEffect_Duration = 0.4f;
+    public float MadeSquareEffect_TargetEmission = 2f;
+
+    IEnumerator releaseIE;
+    IEnumerator madeSquareIE;
 
     private void Awake()
     {
@@ -40,7 +50,6 @@ public class BlockEffector : MonoBehaviour
 
         StartCoroutine(releaseIE);
     }
-
 
     IEnumerator IEReleasePolyomino(List<BlockSlot> realSlots, List<BlockSlot> fakeSlots, PolyominoBase effectObj)
     {
@@ -133,5 +142,53 @@ public class BlockEffector : MonoBehaviour
 
         isEffectTime = false;
         onEndReleasePoloymino?.Invoke();
+    }
+
+    public void StartMadeSquareEffect(List<List<BlockSlot>> madeSlotList)
+    {
+        if (madeSquareIE != null) StopCoroutine(madeSquareIE);
+        madeSquareIE = IEMadeSquareEffect(madeSlotList);
+
+        StartCoroutine(madeSquareIE);
+    }
+
+    IEnumerator IEMadeSquareEffect(List<List<BlockSlot>> madeSlotList)
+    {
+        isEffectTime = true;
+        onStartMadeSquareEffect?.Invoke(madeSlotList);
+
+        float timer = 0f;
+
+        while (timer <= MadeSquareEffect_Duration)
+        {
+            timer += Time.deltaTime;
+
+            foreach (List<BlockSlot> slotList in madeSlotList)
+            {
+                foreach (BlockSlot slot in slotList)
+                {
+                    if (slot.curBlock != null)
+                    {
+                        slot.curBlock.SetEmission(MadeSquareEffect_TargetEmission * MadeSquareEffect.Evaluate(timer / MadeSquareEffect_Duration));
+                    }
+                }
+            }
+
+            yield return null;
+        }
+
+        foreach (List<BlockSlot> slotList in madeSlotList)
+        {
+            foreach (BlockSlot slot in slotList)
+            {
+                if (slot.curBlock != null)
+                {
+                    slot.curBlock.SetEmission(MadeSquareEffect_TargetEmission);
+                }
+            }
+        }
+
+        isEffectTime = false;
+        onEndMadeSquareEffect?.Invoke(madeSlotList);
     }
 }

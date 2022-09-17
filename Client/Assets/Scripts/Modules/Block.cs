@@ -20,6 +20,14 @@ public class Block : MonoBehaviour
 
     public Visual CurVisual;
 
+
+    Renderer hardMatRenderer;
+    Renderer softMatRenderer;
+    Renderer paperMatRenderer;
+    Renderer roundMatRenderer;
+
+    Color baseMatColor;
+
     private void Start()
     {
         SpriteRenderer spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
@@ -28,6 +36,14 @@ public class Block : MonoBehaviour
         {
             spriteRenderer.sortingOrder = 1;
         }
+
+
+        hardMatRenderer = HardBlocks.GetComponent<Renderer>();
+        softMatRenderer = SoftBlocks.GetComponent<Renderer>();
+        paperMatRenderer = PaperBlocks.GetComponent<Renderer>();
+        roundMatRenderer = RoundBlocks.GetComponent<Renderer>();
+
+        baseMatColor = hardMatRenderer.material.color;
     }
 
     public void SetBlockVisual(Visual targetVisual)
@@ -62,28 +78,33 @@ public class Block : MonoBehaviour
         }
     }
 
+
     public void SetBlockTransparent(float alphaValue)
     {
-        Renderer hardMatRenderer = HardBlocks.GetComponent<Renderer>();
         Color hardMatColor = hardMatRenderer.material.color;
         hardMatColor.a = alphaValue;
         hardMatRenderer.material.color = hardMatColor;
 
-        Renderer softMatRenderer = SoftBlocks.GetComponent<Renderer>();
         Color softMatColor = softMatRenderer.material.color;
         softMatColor.a = alphaValue;
         softMatRenderer.material.color = softMatColor;
 
-        Renderer paperMatRenderer = PaperBlocks.GetComponent<Renderer>();
         Color paperMatColor = paperMatRenderer.material.color;
         paperMatColor.a = alphaValue;
         paperMatRenderer.material.color = paperMatColor;
 
-        Renderer roundMatRenderer = RoundBlocks.GetComponent<Renderer>();
         Color roundMatColor = roundMatRenderer.material.color;
         roundMatColor.a = alphaValue;
         roundMatRenderer.material.color = roundMatColor;
+
+
+        //hardMatRenderer.material.SetVector("_EmissionColor", hardMatColor * 10f);
     }
 
+    public void SetEmission(float emissionValue)
+    {
+        Color baseColor = hardMatRenderer.material.color;
+        hardMatRenderer.material.SetVector("_EmissionColor", baseColor * emissionValue);
+    }
 
 }

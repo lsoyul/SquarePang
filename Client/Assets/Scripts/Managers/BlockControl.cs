@@ -43,6 +43,8 @@ public class BlockControl : MonoBehaviour
 
         BlockEffector.onStartReleasePolyomino += OnStartReleasePolyomino;
         BlockEffector.onEndReleasePoloymino += OnEndReleasePolyomino;
+        BlockEffector.onStartMadeSquareEffect += OnStartMadeSquareEffect;
+        BlockEffector.onEndMadeSquareEffect += OnEndMadeSquareEffect;
     }
 
     private void OnDestroy()
@@ -55,6 +57,8 @@ public class BlockControl : MonoBehaviour
 
         BlockEffector.onStartReleasePolyomino -= OnStartReleasePolyomino;
         BlockEffector.onEndReleasePoloymino -= OnEndReleasePolyomino;
+        BlockEffector.onStartMadeSquareEffect -= OnStartMadeSquareEffect;
+        BlockEffector.onEndMadeSquareEffect -= OnEndMadeSquareEffect;
     }
 
     private void Start()
@@ -108,7 +112,7 @@ public class BlockControl : MonoBehaviour
         {
             //Debug.Log("==OnReleasePolyomino: " + targetPolyomino);
             PointerManager.CurGrabbingPolyomino.transform.localPosition = Vector3.zero;
-        onFinishReleasePolyomino?.Invoke();
+            onFinishReleasePolyomino?.Invoke();
         }
 
     }
@@ -359,8 +363,26 @@ public class BlockControl : MonoBehaviour
     void OnEndReleasePolyomino()
     {
         onSuccessReleaseOnGameBoard?.Invoke(beforeSlots, beforePutCount, beforeBreakCount);
-        onFinishReleasePolyomino?.Invoke();
+
+        List<List<BlockSlot>> madeSlots = GameBoard.GetMatchSqares();
+
+        if (madeSlots != null && madeSlots.Count > 0)
+        {
+            BlockEffector.Instance.StartMadeSquareEffect(madeSlots);
+        }
+        else
+        {
+            onFinishReleasePolyomino?.Invoke();
+        }
     }
 
+    void OnStartMadeSquareEffect(List<List<BlockSlot>> madeSlots)
+    {
 
+    }
+
+    void OnEndMadeSquareEffect(List<List<BlockSlot>> madeSlots)
+    {
+        onFinishReleasePolyomino?.Invoke();
+    }
 }
