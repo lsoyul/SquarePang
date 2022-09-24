@@ -9,80 +9,200 @@ public class AdsManager : MonoBehaviour
 {
     bool isTestAds = true;
 
-    private InterstitialAd ads_AfterGameOver; // After Game Over
+    private InterstitialAd ads_Interstitial_AfterGameOver; // After Game Over Insterstitial
+    private RewardedAd ads_Reward_AfterGameOver; // After Game Over Rewarded
 
-    string adUnitId_afterGameOver;
+    #region -- Interstitial Ads (After Gameover) --
 
-    const string afterGameOver_ADID_Android = "ca-app-pub-1021255306046408/5062113930";
-    const string afterGameOver_ADID_IOS = "ca-app-pub-1021255306046408/5992052226";
+    string adUnitId_Interstitial_AfterGameOver;
+
+    const string interstitialAdID_afterGameOver_Android = "ca-app-pub-1021255306046408/5062113930";
+    const string interstitialAdID_afterGameOver_IOS = "ca-app-pub-1021255306046408/5992052226";
 
     const string TEST_interstitialAds_Android = "ca-app-pub-3940256099942544/1033173712";
     const string TEST_interstitialAds_IOS = "ca-app-pub-3940256099942544/4411468910";
 
-    AdRequest request_afterGameOver;
+    #endregion
+
+
+    #region -- Reward Ads (After Gameover) --
+
+    string adUnitId_Reward_afterGameOver;
+
+    const string RewardAdId_AfterGameOver_Android = "ca-app-pub-1021255306046408/3534913849";
+    const string RewardAdId_AfterGameOver_IOS = "ca-app-pub-1021255306046408/6795539993";
+
+    const string TEST_RewardAdId_AfterGameOver_Android = "ca-app-pub-3940256099942544/5224354917";
+    const string TEST_RewardAdId_AfterGameOver_IOS = "ca-app-pub-3940256099942544/1712485313";
+
+    #endregion
+
+    AdRequest request_Interstitial_afterGameOver;
+    AdRequest request_Rewarded_afterGameOver;
 
     void Start()
     {
-#if UNITY_ANDROID
-        if (isTestAds) adUnitId_afterGameOver = TEST_interstitialAds_Android;
-        else adUnitId_afterGameOver = afterGameOver_ADID_Android;
-#elif UNITY_IOS
-        if (isTestAds) adUnitId_afterGameOver = TEST_interstitialAds_IOS;
-        else adUnitId_afterGameOver = afterGameOver_ADID_IOS;
-#endif
 
         MobileAds.Initialize((InitializationStatus initStatus) => {
             Debug.Log("MoblieAds Init: " + initStatus);
         });
 
+        CreateAndLoaded_InterstitialAds_AfterGameOver();
+        CreateAndLoaded_RewardedAds_AfterGameOver();
+    }
+
+
+    void CreateAndLoaded_InterstitialAds_AfterGameOver()
+    {
+
+#if UNITY_ANDROID
+        if (isTestAds)
+            adUnitId_Interstitial_AfterGameOver = TEST_interstitialAds_Android;
+        else
+            adUnitId_Interstitial_AfterGameOver = interstitialAdID_afterGameOver_Android;
+
+#elif UNITY_IOS
+        if (isTestAds)
+            adUnitId_Interstitial_AfterGameOver = TEST_interstitialAds_IOS;
+        else
+            adUnitId_Interstitial_AfterGameOver = interstitialAdID_afterGameOver_IOS;
+#endif
+
 
         // Initialize an InterstitialAd. - After Game Over
-        this.ads_AfterGameOver = new InterstitialAd(adUnitId_afterGameOver);
+        this.ads_Interstitial_AfterGameOver = new InterstitialAd(adUnitId_Interstitial_AfterGameOver);
 
         // Called when an ad request has successfully loaded.
-        this.ads_AfterGameOver.OnAdLoaded += HandleOnAdLoaded;
+        this.ads_Interstitial_AfterGameOver.OnAdLoaded += HandleOnAdLoaded_Interstitial_AfterGameOver;
         // Called when an ad request failed to load.
-        this.ads_AfterGameOver.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        this.ads_Interstitial_AfterGameOver.OnAdFailedToLoad += HandleOnAdFailedToLoad_Interstitial_AfterGameOver;
         // Called when an ad is shown.
-        this.ads_AfterGameOver.OnAdOpening += HandleOnAdOpening;
+        this.ads_Interstitial_AfterGameOver.OnAdOpening += HandleOnAdOpening_Interstitial_AfterGameOver;
         // Called when the ad is closed.
-        this.ads_AfterGameOver.OnAdClosed += HandleOnAdClosed;
+        this.ads_Interstitial_AfterGameOver.OnAdClosed += HandleOnAdClosed_Interstitial_AfterGameOver;
 
         // Create an empty ad request.
-        request_afterGameOver = new AdRequest.Builder().Build();
+        request_Interstitial_afterGameOver = new AdRequest.Builder().Build();
         // Load the interstitial with the request.
-        this.ads_AfterGameOver.LoadAd(request_afterGameOver);
+        this.ads_Interstitial_AfterGameOver.LoadAd(request_Interstitial_afterGameOver);
+
+    }
+
+    void CreateAndLoaded_RewardedAds_AfterGameOver()
+    {
+
+#if UNITY_ANDROID
+        if (isTestAds)
+            adUnitId_Reward_afterGameOver = TEST_RewardAdId_AfterGameOver_Android;
+        else
+            adUnitId_Reward_afterGameOver = RewardAdId_AfterGameOver_Android;
+
+#elif UNITY_IOS
+        if (isTestAds)
+            adUnitId_Reward_afterGameOver = TEST_RewardAdId_AfterGameOver_IOS;
+        else
+            adUnitId_Reward_afterGameOver = RewardAdId_AfterGameOver_IOS;
+#endif
+
+        this.ads_Reward_AfterGameOver = new RewardedAd(adUnitId_Reward_afterGameOver);
+
+        // Called when an ad request has successfully loaded.
+        this.ads_Reward_AfterGameOver.OnAdLoaded += HandleRewardedAdLoaded_AfterGameOver;
+        // Called when an ad request failed to load.
+        this.ads_Reward_AfterGameOver.OnAdFailedToLoad += HandleRewardedAdFailedToLoad_AfterGameOver;
+        // Called when an ad is shown.
+        this.ads_Reward_AfterGameOver.OnAdOpening += HandleRewardedAdOpening_AfterGameOver;
+        // Called when an ad request failed to show.
+        this.ads_Reward_AfterGameOver.OnAdFailedToShow += HandleRewardedAdFailedToShow_AfterGameOver;
+        // Called when the user should be rewarded for interacting with the ad.
+        this.ads_Reward_AfterGameOver.OnUserEarnedReward += HandleUserEarnedReward_AfterGameOver;
+        // Called when the ad is closed.
+        this.ads_Reward_AfterGameOver.OnAdClosed += HandleRewardedAdClosed;
+
+
+
+        request_Rewarded_afterGameOver = new AdRequest.Builder().Build();
+        this.ads_Reward_AfterGameOver.LoadAd(request_Rewarded_afterGameOver);
     }
 
     public void ShowAds_AfterGameOver()
     {
-        if (this.ads_AfterGameOver.IsLoaded())
+        if (this.ads_Interstitial_AfterGameOver.IsLoaded())
         {
-            this.ads_AfterGameOver.Show();
+            this.ads_Interstitial_AfterGameOver.Show();
         }
     }
 
-    public void HandleOnAdLoaded(object sender, EventArgs args)
+    public void ShowAds_Rewarded_AfterGameOver()
+    {
+        if (this.ads_Reward_AfterGameOver.IsLoaded())
+        {
+            this.ads_Reward_AfterGameOver.Show();
+        }
+    }
+
+    #region -- Interstitial AfterGameOver Implements --
+
+    public void HandleOnAdLoaded_Interstitial_AfterGameOver(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleAdLoaded event received");
     }
 
-    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    public void HandleOnAdFailedToLoad_Interstitial_AfterGameOver(object sender, AdFailedToLoadEventArgs args)
     {
         MonoBehaviour.print("HandleFailedToReceiveAd event received with message: "
                             + args.LoadAdError.GetMessage());
     }
 
-    public void HandleOnAdOpening(object sender, EventArgs args)
+    public void HandleOnAdOpening_Interstitial_AfterGameOver(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleAdOpening event received");
     }
 
-    public void HandleOnAdClosed(object sender, EventArgs args)
+    public void HandleOnAdClosed_Interstitial_AfterGameOver(object sender, EventArgs args)
     {
-        this.ads_AfterGameOver.LoadAd(request_afterGameOver);
+        CreateAndLoaded_InterstitialAds_AfterGameOver();
         MonoBehaviour.print("HandleAdClosed event received");
     }
+
+    #endregion
+
+
+    #region -- Rewarded After GameOver Implements --
+
+    private void HandleRewardedAdClosed(object sender, EventArgs e)
+    {
+        CreateAndLoaded_RewardedAds_AfterGameOver();
+    }
+
+    private void HandleUserEarnedReward_AfterGameOver(object sender, Reward reward)
+    {
+        string type = reward.Type;
+        double amount = reward.Amount;
+    }
+
+    private void HandleRewardedAdFailedToShow_AfterGameOver(object sender, AdErrorEventArgs e)
+    {
+
+    }
+
+    private void HandleRewardedAdOpening_AfterGameOver(object sender, EventArgs e)
+    {
+
+    }
+
+    private void HandleRewardedAdFailedToLoad_AfterGameOver(object sender, AdFailedToLoadEventArgs e)
+    {
+
+    }
+
+    private void HandleRewardedAdLoaded_AfterGameOver(object sender, EventArgs e)
+    {
+
+    }
+
+    #endregion
+
 }
 
 
