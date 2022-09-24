@@ -7,6 +7,8 @@ using System;
 
 public class AdsManager : MonoBehaviour
 {
+    public static AdsManager Instance;
+
     bool isTestAds = true;
 
     private InterstitialAd ads_Interstitial_AfterGameOver; // After Game Over Insterstitial
@@ -35,10 +37,25 @@ public class AdsManager : MonoBehaviour
     const string TEST_RewardAdId_AfterGameOver_Android = "ca-app-pub-3940256099942544/5224354917";
     const string TEST_RewardAdId_AfterGameOver_IOS = "ca-app-pub-3940256099942544/1712485313";
 
+    public static Action onEarnedByRewardAd;
+
     #endregion
 
     AdRequest request_Interstitial_afterGameOver;
     AdRequest request_Rewarded_afterGameOver;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
 
     void Start()
     {
@@ -179,6 +196,8 @@ public class AdsManager : MonoBehaviour
     {
         string type = reward.Type;
         double amount = reward.Amount;
+
+        onEarnedByRewardAd?.Invoke();
     }
 
     private void HandleRewardedAdFailedToShow_AfterGameOver(object sender, AdErrorEventArgs e)

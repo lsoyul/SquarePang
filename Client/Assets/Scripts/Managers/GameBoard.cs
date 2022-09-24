@@ -35,6 +35,9 @@ public class GameBoard : MonoBehaviour
 
     public static float ValidReleaseMaxDist = 0f;
 
+    public const int ReviveMaxCount = 1;
+    public static int ReviveRemainCount = ReviveMaxCount;
+
     // =============== private
     private static List<List<BlockSlot>> blockSlots = new List<List<BlockSlot>>();
     private static List<int> matchSquareSizes = new List<int>();
@@ -57,12 +60,16 @@ public class GameBoard : MonoBehaviour
     {
         BlockControl.onFinishReleasePolyomino += OnFinishReleasePolyomino;
         BlockControl.onSuccessReleaseOnGameBoard += OnSuccessReleaseOnGameBoard;
+
+        AdsManager.onEarnedByRewardAd += OnEarnedByRewardAd;
     }
 
     private void OnDestroy()
     {
         BlockControl.onFinishReleasePolyomino -= OnFinishReleasePolyomino;
         BlockControl.onSuccessReleaseOnGameBoard -= OnSuccessReleaseOnGameBoard;
+
+        AdsManager.onEarnedByRewardAd -= OnEarnedByRewardAd;
     }
 
     private void Start()
@@ -439,4 +446,18 @@ public class GameBoard : MonoBehaviour
         return true;
     }
 
+
+    public void ShowAdsToRevive()
+    {
+        if (ReviveRemainCount > 0)
+        {
+            ReviveRemainCount--;
+            AdsManager.Instance.ShowAds_Rewarded_AfterGameOver();
+        }
+    }
+
+    void OnEarnedByRewardAd()
+    {
+
+    }
 }

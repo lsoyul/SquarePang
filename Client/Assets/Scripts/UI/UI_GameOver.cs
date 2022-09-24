@@ -7,6 +7,7 @@ public class UI_GameOver : MonoBehaviour
     public GameObject gameOverTextRoot;
     public TMPro.TMP_Text gameOverText;
     public TMPro.TMP_Text gameOverScoreText;
+    public GameObject reviveBtnObj;
 
     private void Awake()
     {
@@ -14,6 +15,8 @@ public class UI_GameOver : MonoBehaviour
         GameBoard.onInitBoard += OnInitBoard;
 
         PageControl.onChangePage += OnChangePage;
+
+        AdsManager.onEarnedByRewardAd += OnEarnedByRewardAd;
     }
 
     private void OnDestroy()
@@ -22,11 +25,15 @@ public class UI_GameOver : MonoBehaviour
         GameBoard.onInitBoard -= OnInitBoard;
 
         PageControl.onChangePage -= OnChangePage;
+
+        AdsManager.onEarnedByRewardAd -= OnEarnedByRewardAd;
     }
 
     void OnInitBoard()
     {
         gameOverTextRoot.SetActive(false);
+
+        UpdateReviveBtn();
     }
 
     void OnGameOver(GameStatics.GameEndType gameEndType)
@@ -40,10 +47,30 @@ public class UI_GameOver : MonoBehaviour
     void OnChangePage(GameStatics.GamePage targetPage)
     {
         gameOverTextRoot.SetActive(false);
+        UpdateReviveBtn();
     }
 
     void Start()
     {
         gameOverTextRoot.SetActive(false);
+        UpdateReviveBtn();
+    }
+
+    void OnEarnedByRewardAd()
+    {
+        gameOverTextRoot.SetActive(false);
+        UpdateReviveBtn();
+    }
+
+    void UpdateReviveBtn()
+    {
+        if ((GameBoard.ReviveRemainCount > 0) == false)
+        {
+            reviveBtnObj.SetActive(false);
+        }
+        else
+        {
+            reviveBtnObj.SetActive(true);
+        }
     }
 }
