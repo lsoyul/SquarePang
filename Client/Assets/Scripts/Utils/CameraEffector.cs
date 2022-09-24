@@ -11,6 +11,7 @@ public class CameraEffector : MonoBehaviour
     public DOTweenAnimation gameBoardZMove;
     public DOTweenAnimation gameBoardXYShake;
 
+    public float madeShakeDuration = 0.25f;
     public float madeShakeDefaultRatio = 0.02f;
 
     private void Awake()
@@ -44,7 +45,7 @@ public class CameraEffector : MonoBehaviour
 
         if (madeSlots.Count > 0)
         {
-            targetGameBoard.transform.DOShakePosition(0.3f, madeShakeDefaultRatio * slotCount, 50, 90).SetEase(Ease.OutQuad).From();
+            targetGameBoard.transform.DOShakePosition(madeShakeDuration, madeShakeDefaultRatio * slotCount, 60, 90).SetEase(Ease.OutQuad).From();
             //gameBoardXYShake.DORestart();
         }
     }

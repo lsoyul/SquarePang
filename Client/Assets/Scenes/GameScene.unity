@@ -8906,6 +8906,7 @@ MonoBehaviour:
   targetGameBoard: {fileID: 1768222550}
   gameBoardZMove: {fileID: 109829828}
   gameBoardXYShake: {fileID: 807731384}
+  madeShakeDuration: 0.25
   madeShakeDefaultRatio: 0.02
 --- !u!1 &1209009277
 GameObject:
