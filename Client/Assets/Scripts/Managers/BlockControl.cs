@@ -42,7 +42,7 @@ public class BlockControl : MonoBehaviour
         GameBoard.onInitBoard += OnInitBoard;
 
         BlockEffector.onStartReleasePolyomino += OnStartReleasePolyomino;
-        BlockEffector.onEndReleasePoloymino += OnEndReleasePolyomino;
+        BlockEffector.onEndReleasePolyomino += OnEndReleasePolyomino;
         BlockEffector.onStartMadeSquareEffect += OnStartMadeSquareEffect;
         BlockEffector.onEndMadeSquareEffect += OnEndMadeSquareEffect;
     }
@@ -56,7 +56,7 @@ public class BlockControl : MonoBehaviour
         GameBoard.onInitBoard -= OnInitBoard;
 
         BlockEffector.onStartReleasePolyomino -= OnStartReleasePolyomino;
-        BlockEffector.onEndReleasePoloymino -= OnEndReleasePolyomino;
+        BlockEffector.onEndReleasePolyomino -= OnEndReleasePolyomino;
         BlockEffector.onStartMadeSquareEffect -= OnStartMadeSquareEffect;
         BlockEffector.onEndMadeSquareEffect -= OnEndMadeSquareEffect;
     }

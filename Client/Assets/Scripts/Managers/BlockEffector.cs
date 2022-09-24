@@ -12,7 +12,7 @@ public class BlockEffector : MonoBehaviour
     public static bool isEffectTime = false;
 
     public static Action<List<BlockSlot>, PolyominoBase> onStartReleasePolyomino;
-    public static Action onEndReleasePoloymino;
+    public static Action onEndReleasePolyomino;
 
     public static Action<List<List<BlockSlot>>> onStartMadeSquareEffect;
     public static Action<List<List<BlockSlot>>> onEndMadeSquareEffect;
@@ -142,7 +142,7 @@ public class BlockEffector : MonoBehaviour
         }
 
         isEffectTime = false;
-        onEndReleasePoloymino?.Invoke();
+        onEndReleasePolyomino?.Invoke();
     }
 
     public void StartMadeSquareEffect(List<List<BlockSlot>> madeSlotList)
