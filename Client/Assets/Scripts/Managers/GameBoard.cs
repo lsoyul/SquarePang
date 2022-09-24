@@ -27,6 +27,7 @@ public class GameBoard : MonoBehaviour
     public static Action onInitBoard;
     public static Action<List<List<BlockSlot>>, int, bool> onMadeSquare;  // madelist, breakerCount, isCleanBoard
     public static Action<GameEndType> onGameOver;
+    public static Action onReviveGameBoard;
 
     public static GameMode CurGameMode = GameMode.Sprint;
 
@@ -238,6 +239,7 @@ public class GameBoard : MonoBehaviour
         sprintModeCurMadeSquareCount = 0;
         ResultScore = 0;
         RemainBreakerCount = 0;
+        ReviveRemainCount = ReviveMaxCount;
 
         CurBoardWidth = boardWidth;
         CurBoardHeight = boardHeight;
@@ -458,6 +460,16 @@ public class GameBoard : MonoBehaviour
 
     void OnEarnedByRewardAd()
     {
+        foreach (List<BlockSlot> slotList in blockSlots)
+        {
+            foreach (BlockSlot slot in slotList)
+            {
+                slot.RemoveBlock();
+            }
+        }
 
+        RemainBreakerCount = 0;
+
+        onReviveGameBoard?.Invoke();
     }
 }

@@ -12,12 +12,14 @@ public class UI_BreakerText : MonoBehaviour
     {
         GameBoard.onInitBoard += OnInitBoard;
         GameBoard.onChangeScore += OnChangeScore;
+        GameBoard.onReviveGameBoard += OnReviveGameBoard;
     }
 
     private void OnDestroy()
     {
         GameBoard.onInitBoard -= OnInitBoard;
         GameBoard.onChangeScore -= OnChangeScore;
+        GameBoard.onReviveGameBoard -= OnReviveGameBoard;
     }
 
     void OnInitBoard()
@@ -43,6 +45,11 @@ public class UI_BreakerText : MonoBehaviour
             breakerTitleText.Play();
         }
 
+        breakerCountText.text = GameBoard.RemainBreakerCount.ToString();
+    }
+
+    void OnReviveGameBoard()
+    {
         breakerCountText.text = GameBoard.RemainBreakerCount.ToString();
     }
 }
