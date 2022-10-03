@@ -4,6 +4,8 @@ using UnityEngine;
 
 using System;
 
+using DG.Tweening;
+
 using static GameStatics;
 
 public class PageControl : MonoBehaviour
@@ -14,6 +16,8 @@ public class PageControl : MonoBehaviour
 
     public GameObject TitlePage;
     public GameObject GamePagee;
+
+    public List<DOTweenAnimation> tweenerInTitle;
 
     bool isInit = false;
 
@@ -73,6 +77,8 @@ public class PageControl : MonoBehaviour
                 break;
         }
 
+        PlayTweeners(targetPage);
+
         gameBoard.InitGameBoardBase(gameBoard.boardWidth, gameBoard.boardHeight);
         onChangePage?.Invoke(CurPage);
     }
@@ -84,5 +90,19 @@ public class PageControl : MonoBehaviour
         //gameBoard.InitGameBoardBase(gameBoard.boardWidth, gameBoard.boardHeight);
         
         ChangePage(GamePage.Title);
+    }
+
+    public void PlayTweeners(GamePage targetPage)
+    {
+        if (targetPage == GamePage.Title)
+        {
+            if (tweenerInTitle != null)
+            {
+                foreach (var tween in tweenerInTitle)
+                {
+                    tween.DORestart();
+                }
+            }
+        }
     }
 }
