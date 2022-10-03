@@ -11410,7 +11410,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 1
   ForWords: 
-  IsFinished: 0
+  IsFinished: 1
 --- !u!114 &1394424071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12653,7 +12653,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2432, y: 5104.6665}
+  m_SizeDelta: {x: 3000, y: 5600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1576981627
 MonoBehaviour:
