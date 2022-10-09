@@ -7494,7 +7494,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 0
+  IsFinished: 1
 --- !u!114 &955385100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8912,7 +8912,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 0
+  IsFinished: 1
 --- !u!1001 &1053158727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9685,7 +9685,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 0
+  IsFinished: 1
 --- !u!114 &1149063558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11410,7 +11410,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 1
   ForWords: 
-  IsFinished: 1
+  IsFinished: 0
 --- !u!114 &1394424071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11433,8 +11433,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Square Pang
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1ecd934252a8345ec9a0b79c86572994, type: 2}
-  m_sharedMaterial: {fileID: 1968471638170630827, guid: 1ecd934252a8345ec9a0b79c86572994, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fd8e6492760f240e881efb4031fb90ed, type: 2}
+  m_sharedMaterial: {fileID: -8419094492866535605, guid: fd8e6492760f240e881efb4031fb90ed, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
