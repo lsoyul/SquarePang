@@ -20,6 +20,7 @@ public class GameBoard : MonoBehaviour
 
     public static int ResultScore = 0;
     public static int RemainBreakerCount = 0;
+    public const int RemainBreakerMaxCount = 15;
 
     public static bool useBreakerScoreMultiply = true;
 
