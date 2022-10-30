@@ -306,8 +306,15 @@ public class BlockControl : MonoBehaviour
                     beforeUseBreakerCount = haveToUseBreakerCount;
                 }
             }
-            else GameBoard.RemainBreakerCount++;
+            else
+            {
+                GameBoard.RemainBreakerCount++;
 
+                if (GameBoard.RemainBreakerCount > GameBoard.RemainBreakerMaxCount)
+                {
+                    GameBoard.RemainBreakerCount = GameBoard.RemainBreakerMaxCount;
+                }
+            }
 
             // ======= Possible to put ======
 
