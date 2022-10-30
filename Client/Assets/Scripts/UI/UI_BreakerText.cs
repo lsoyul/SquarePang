@@ -13,6 +13,8 @@ public class UI_BreakerText : MonoBehaviour
     public RectTransform UIBreakerGauge_BG;
     public RectTransform UIBreakerGauge_Front;
 
+    public DOTweenAnimation breakerIconTween;
+
     private float breakerGaugeTweenDuration = 0.2f;
 
     private float breakerGaugeMaxHeight = 1500f;
@@ -51,6 +53,7 @@ public class UI_BreakerText : MonoBehaviour
         {
             // Add Breaker
             breakerTextEffect.Play();
+            breakerIconTween.DORestart();
         }
         else if (oldBreakerCount > GameBoard.RemainBreakerCount)
         {
@@ -58,6 +61,7 @@ public class UI_BreakerText : MonoBehaviour
             breakerTextEffect.Play();
 
             breakerTitleText.Play();
+            breakerIconTween.DORestart();
         }
 
         breakerCountText.text = GameBoard.RemainBreakerCount.ToString();
