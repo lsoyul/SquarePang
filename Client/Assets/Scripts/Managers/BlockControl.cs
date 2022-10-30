@@ -77,7 +77,7 @@ public class BlockControl : MonoBehaviour
     float screenPosGrabOffsetRatio = 200f / 1920f;
     private Vector2 screenPosGrabOffset = new Vector3(0f, 200f);
 
-    float grabHeight = 3f;
+    float grabHeight = 1f;
 
     void OnGrabPolyomino(PolyominoBase targetPolyomino, PointerEventData eventData)
     {
