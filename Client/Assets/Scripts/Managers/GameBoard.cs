@@ -249,7 +249,7 @@ public class GameBoard : MonoBehaviour
         CurBoardHeight = boardHeight;
 
         backGround.transform.localScale = new Vector3(boardWidth + backGroundScaleOffset, boardHeight + backGroundScaleOffset);
-        backGround.transform.position = new Vector3(0, boardYOffset + 0.5f, backGroundZOffset);
+        backGround.transform.localPosition = new Vector3(0, boardYOffset + 0.5f, backGroundZOffset);
         backGround.SetActive(true);
 
         if (blockSlots.Count > 0) ClearGameBoardBase();
@@ -266,7 +266,7 @@ public class GameBoard : MonoBehaviour
                 newBlockSlot.name = string.Format("Slot{0}.{1}", i, j);
                 float posX = j - boardWidth / 2f + boardXOffset;
                 float posY = -(i - boardHeight / 2f)  + boardYOffset;
-                newBlockSlot.transform.position = new Vector3(posX, posY, 0f);
+                newBlockSlot.transform.localPosition = new Vector3(posX, posY, 0f);
                 newBlockSlot.InitBlockSlot(j, i);
 
                 newBlockSlotList.Add(newBlockSlot);
