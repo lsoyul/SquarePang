@@ -235,6 +235,9 @@ public class GameBoard : MonoBehaviour
         return res;
     }
 
+    public float backGroundScaleOffset = 0.5f;
+    public float backGroundZOffset = 0f;
+
     public void InitGameBoardBase(int boardWidth, int boardHeight)
     {
         sprintModeCurMadeSquareCount = 0;
@@ -245,8 +248,8 @@ public class GameBoard : MonoBehaviour
         CurBoardWidth = boardWidth;
         CurBoardHeight = boardHeight;
 
-        backGround.transform.localScale = new Vector3(boardWidth + 0.5f, boardHeight + 0.5f);
-        backGround.transform.position = new Vector3(0, boardYOffset + 0.5f);
+        backGround.transform.localScale = new Vector3(boardWidth + backGroundScaleOffset, boardHeight + backGroundScaleOffset);
+        backGround.transform.position = new Vector3(0, boardYOffset + 0.5f, backGroundZOffset);
         backGround.SetActive(true);
 
         if (blockSlots.Count > 0) ClearGameBoardBase();
