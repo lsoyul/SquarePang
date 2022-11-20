@@ -17,8 +17,8 @@ public class UI_BreakerText : MonoBehaviour
 
     private float breakerGaugeTweenDuration = 0.2f;
 
-    private float breakerGaugeMaxHeight = 1500f;
-    private float breakerGaugeBaseUnitHeight = 100f;
+    private float breakerGaugeMaxWidth = 1500f;
+    private float breakerGaugeBaseUnitWidth = 100f;
 
     private void Awake()
     {
@@ -26,8 +26,8 @@ public class UI_BreakerText : MonoBehaviour
         GameBoard.onChangeScore += OnChangeScore;
         GameBoard.onReviveGameBoard += OnReviveGameBoard;
 
-        breakerGaugeMaxHeight = UIBreakerGauge_BG.rect.height;
-        breakerGaugeBaseUnitHeight = breakerGaugeMaxHeight / GameBoard.RemainBreakerMaxCount;
+        breakerGaugeMaxWidth = UIBreakerGauge_BG.rect.width;
+        breakerGaugeBaseUnitWidth = breakerGaugeMaxWidth / GameBoard.RemainBreakerMaxCount;
 
     }
 
@@ -42,6 +42,10 @@ public class UI_BreakerText : MonoBehaviour
     {
         breakerCountText.text = GameBoard.RemainBreakerCount.ToString();
         SetBreakerGauge(GameBoard.RemainBreakerCount, false);
+
+        Vector3 fixedThisPos = this.transform.position;
+        fixedThisPos.y = GameBoard.BottomBoardScreenCoordY;
+        this.transform.position = fixedThisPos;
     }
 
 
@@ -74,25 +78,25 @@ public class UI_BreakerText : MonoBehaviour
         breakerCountText.text = GameBoard.RemainBreakerCount.ToString();
     }
 
-    float GetBreakerGaugeHeight()
+    float GetBreakerGaugeWidth()
     {
-        return GameBoard.RemainBreakerCount * breakerGaugeBaseUnitHeight;
+        return GameBoard.RemainBreakerCount * breakerGaugeBaseUnitWidth;
     }
 
-    float tweenHeight;
+    float tweenGauge;
 
     void SetBreakerGauge(int targetBreaker, bool animation = true)
     {
-        float resHeight = targetBreaker * breakerGaugeBaseUnitHeight;
+        float resWidth = targetBreaker * breakerGaugeBaseUnitWidth;
 
         if (animation == false)
         {
-            UIBreakerGauge_Front.sizeDelta = new Vector2(UIBreakerGauge_Front.rect.width, resHeight);
+            UIBreakerGauge_Front.sizeDelta = new Vector2(resWidth, UIBreakerGauge_Front.rect.height);
         }
         else
         {
-            tweenHeight = UIBreakerGauge_Front.rect.height;
-            DOTween.To(() => tweenHeight, x => tweenHeight = x, resHeight, breakerGaugeTweenDuration)
+            tweenGauge = UIBreakerGauge_Front.rect.width;
+            DOTween.To(() => tweenGauge, x => tweenGauge = x, resWidth, breakerGaugeTweenDuration)
                 .OnUpdate(onUpdateBreakerGauge)
                 .OnComplete(onCompleteBreakerGaugeTween)
                 .SetEase(Ease.OutExpo);
@@ -101,11 +105,11 @@ public class UI_BreakerText : MonoBehaviour
 
     void onUpdateBreakerGauge()
     {
-        UIBreakerGauge_Front.sizeDelta = new Vector2(UIBreakerGauge_Front.rect.width, tweenHeight);
+        UIBreakerGauge_Front.sizeDelta = new Vector2(tweenGauge, UIBreakerGauge_Front.rect.height);
     }
 
     void onCompleteBreakerGaugeTween()
     {
-        UIBreakerGauge_Front.sizeDelta = new Vector2(UIBreakerGauge_Front.rect.width, GetBreakerGaugeHeight());
+        UIBreakerGauge_Front.sizeDelta = new Vector2(GetBreakerGaugeWidth(), UIBreakerGauge_Front.rect.height);
     }
 }
