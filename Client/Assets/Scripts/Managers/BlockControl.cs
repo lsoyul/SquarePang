@@ -36,6 +36,12 @@ public class BlockControl : MonoBehaviour
 
     public static int beforeUseBreakerCount = 0;
 
+    // Fix block positions in order for UI
+    public Transform UINextBlock1;
+    public Transform UINextBlock2;
+    public Transform UICurBlock;
+    public Transform UIStashBlock;
+
     private void Awake()
     {
         PointerManager.onGrabPolyomino += OnGrabPolyomino;
@@ -66,9 +72,20 @@ public class BlockControl : MonoBehaviour
 
     private void Start()
     {
+        FixBlockBasePositions();
+
         OnInitBoard();
 
         screenPosGrabOffset.y = Screen.height * screenPosGrabOffsetRatio;
+    }
+
+    void FixBlockBasePositions()
+    {
+        nextBlockPos[0].position = Camera.main.ScreenToWorldPoint(new Vector3(UICurBlock.position.x, UICurBlock.position.y, 16f));
+        nextBlockPos[1].position = Camera.main.ScreenToWorldPoint(new Vector3(UINextBlock1.position.x, UINextBlock1.position.y, 32f));
+        nextBlockPos[2].position = Camera.main.ScreenToWorldPoint(new Vector3(UINextBlock2.position.x, UINextBlock2.position.y, 32f));
+
+        stashBlockPos.position = Camera.main.ScreenToWorldPoint(new Vector3(UIStashBlock.position.x, UIStashBlock.position.y, 32f));
     }
 
     void OnInitBoard()
