@@ -20,6 +20,7 @@ public class Btn_UI : MonoBehaviour
 
     public DOTweenAnimation rotateTweener;
     public DOTweenAnimation stashTweener;
+    public DOTweenAnimation stashArrowTweener;
 
     #endregion
 
@@ -46,6 +47,7 @@ public class Btn_UI : MonoBehaviour
     public void OnClickStash()
     {
         stashTweener.DORestart();
+        stashArrowTweener.DORestart();
     }
 
     public void OnClickRotate()
