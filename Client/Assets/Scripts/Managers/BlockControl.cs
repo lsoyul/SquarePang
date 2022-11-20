@@ -26,6 +26,9 @@ public class BlockControl : MonoBehaviour
     public static Action<List<BlockSlot>, int, int> onSuccessReleaseOnGameBoard; // <Released BlockSlot List, Put count, Break count>
     public static Action<List<BlockSlot>> onImpossiblePutBlockByBreakerCount;
 
+    public static Action onClickRotate;
+    public static Action onClickStash;
+
     private bool isGrabbing = false;
 
     Vector3 moveTargetPos;
@@ -225,6 +228,7 @@ public class BlockControl : MonoBehaviour
     public static void OnClickRotate()
     {
         NextBlocks[0].GetComponentInChildren<PolyominoBase>().RotateShape();
+        onClickRotate?.Invoke();
     }
 
 
@@ -243,6 +247,7 @@ public class BlockControl : MonoBehaviour
         }
 
         UpdatePolyominoPos();
+        onClickStash?.Invoke();
     }
 
     void UpdatePolyominoPos()

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using DG.Tweening;
+
 using static GameStatics;
 
 public class Btn_UI : MonoBehaviour
@@ -14,21 +16,41 @@ public class Btn_UI : MonoBehaviour
     public GameObject GameModeText_endless;
     public TMPro.TMP_Text sprintText;
 
+    #region Rotate / Stash Button Tween
+
+    public DOTweenAnimation rotateTweener;
+    public DOTweenAnimation stashTweener;
+
+    #endregion
+
     private void Awake()
     {
         PageControl.onChangePage += OnChangePage;
         GameBoard.onMadeSquare += OnMadeSquare;
+
+        BlockControl.onClickStash += OnClickStash;
+        BlockControl.onClickRotate += OnClickRotate;
+
     }
 
+    
     private void OnDestroy()
     {
         PageControl.onChangePage -= OnChangePage;
         GameBoard.onMadeSquare -= OnMadeSquare;
+
+        BlockControl.onClickStash -= OnClickStash;
+        BlockControl.onClickRotate -= OnClickRotate;
+    }
+
+    public void OnClickStash()
+    {
+        stashTweener.DORestart();
     }
 
     public void OnClickRotate()
     {
-        BlockControl.OnClickRotate();
+        rotateTweener.DORestart();
     }
 
     public void OnClickBoardClear()
