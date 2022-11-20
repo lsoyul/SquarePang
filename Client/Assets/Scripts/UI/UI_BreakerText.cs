@@ -44,7 +44,7 @@ public class UI_BreakerText : MonoBehaviour
         SetBreakerGauge(GameBoard.RemainBreakerCount, false);
 
         Vector3 fixedThisPos = this.transform.position;
-        fixedThisPos.y = GameBoard.BottomBoardScreenCoordY;
+        fixedThisPos.y = GameBoard.BoardScreenCoordTopY;
         this.transform.position = fixedThisPos;
     }
 

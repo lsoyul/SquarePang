@@ -36,7 +36,8 @@ public class GameBoard : MonoBehaviour
     public static int sprintModeCurMadeSquareCount = 0;
 
     public static float ValidReleaseMaxDist = 0f;
-    public static float BottomBoardScreenCoordY = 0f;
+    public static float BoardScreenCoordBottomY = 0f;
+    public static float BoardScreenCoordTopY = 0f;
 
     public const int ReviveMaxCount = 1;
     public static int ReviveRemainCount = ReviveMaxCount;
@@ -282,7 +283,12 @@ public class GameBoard : MonoBehaviour
         Vector3 targetWorldPos = lastSlot.transform.position + Vector3.down * 1.3f;
         Vector2 lastSlotScreenPos = Camera.main.WorldToScreenPoint(targetWorldPos);
 
-        BottomBoardScreenCoordY = lastSlotScreenPos.y;
+        BlockSlot firstSlot = blockSlots[0][0];
+        Vector3 firstSlotWorldPos = firstSlot.transform.position + Vector3.up * 0.6f;
+        Vector2 firstSlotScreenPos = Camera.main.WorldToScreenPoint(firstSlotWorldPos);
+
+        BoardScreenCoordBottomY = lastSlotScreenPos.y;
+        BoardScreenCoordTopY = firstSlotScreenPos.y;
 
         onChangeScore?.Invoke(0, ResultScore);
         onInitBoard?.Invoke();

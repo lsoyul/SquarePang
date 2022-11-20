@@ -81,7 +81,7 @@ public class BlockControl : MonoBehaviour
 
     void FixBlockBasePositions()
     {
-        nextBlockPos[0].position = Camera.main.ScreenToWorldPoint(new Vector3(UICurBlock.position.x, UICurBlock.position.y, 16f));
+        nextBlockPos[0].position = Camera.main.ScreenToWorldPoint(new Vector3(UICurBlock.position.x, UICurBlock.position.y, 17f));
         nextBlockPos[1].position = Camera.main.ScreenToWorldPoint(new Vector3(UINextBlock1.position.x, UINextBlock1.position.y, 32f));
         nextBlockPos[2].position = Camera.main.ScreenToWorldPoint(new Vector3(UINextBlock2.position.x, UINextBlock2.position.y, 32f));
 
