@@ -328,7 +328,7 @@ public class GameBoard : MonoBehaviour
             foreach (BlockSlot slot in widthList)
             {
                 float dist = Vector2.Distance(Camera.main.WorldToScreenPoint(slot.transform.position), targetSreenPos);
-                if (dist < minDist && dist < ValidReleaseMaxDist)
+                if (dist < minDist && dist < ValidReleaseMaxDist/2f)
                 {
                     minDist = dist;
                     targetSlot = slot;
