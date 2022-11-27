@@ -2562,7 +2562,7 @@ MonoBehaviour:
   - {fileID: 1959087377}
   - {fileID: 1059442751}
   color_guideRelease: {r: 0.67866683, g: 0.9528302, b: 0.67866683, a: 1}
-  color_guideBreak: {r: 0.7529412, g: 0.7137255, b: 0.4392157, a: 1}
+  color_guideBreak: {r: 0.63529414, g: 0.6862745, b: 0.8078432, a: 1}
 --- !u!1 &210410506
 GameObject:
   m_ObjectHideFlags: 0
@@ -6159,10 +6159,6 @@ PrefabInstance:
     - target: {fileID: 5651408199367047810, guid: e8c987339787a4657820f58d761d4978, type: 3}
       propertyPath: m_Name
       value: BlockSlotNotice
-      objectReference: {fileID: 0}
-    - target: {fileID: 5651408199367047810, guid: e8c987339787a4657820f58d761d4978, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8c987339787a4657820f58d761d4978, type: 3}
