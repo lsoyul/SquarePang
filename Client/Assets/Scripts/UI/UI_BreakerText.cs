@@ -14,6 +14,7 @@ public class UI_BreakerText : MonoBehaviour
     public RectTransform UIBreakerGauge_Front;
 
     public DOTweenAnimation breakerIconTween;
+    public DOTweenAnimation breakerGaugeTween;
 
     private float breakerGaugeTweenDuration = 0.2f;
 
@@ -26,6 +27,8 @@ public class UI_BreakerText : MonoBehaviour
         GameBoard.onChangeScore += OnChangeScore;
         GameBoard.onReviveGameBoard += OnReviveGameBoard;
 
+        BlockControl.onImpossiblePutBlockByBreakerCount += OnImpossiblePutBlockByBreakerCount;
+
         breakerGaugeMaxWidth = UIBreakerGauge_BG.rect.width;
         breakerGaugeBaseUnitWidth = breakerGaugeMaxWidth / GameBoard.RemainBreakerMaxCount;
 
@@ -36,6 +39,8 @@ public class UI_BreakerText : MonoBehaviour
         GameBoard.onInitBoard -= OnInitBoard;
         GameBoard.onChangeScore -= OnChangeScore;
         GameBoard.onReviveGameBoard -= OnReviveGameBoard;
+
+        BlockControl.onImpossiblePutBlockByBreakerCount -= OnImpossiblePutBlockByBreakerCount;
     }
 
     void OnInitBoard()
@@ -115,5 +120,10 @@ public class UI_BreakerText : MonoBehaviour
     void onCompleteBreakerGaugeTween()
     {
         UIBreakerGauge_Front.sizeDelta = new Vector2(GetBreakerGaugeWidth(), UIBreakerGauge_Front.rect.height);
+    }
+
+    void OnImpossiblePutBlockByBreakerCount(List<BlockSlot> failedSlots)
+    {
+        breakerGaugeTween.DORestart();
     }
 }

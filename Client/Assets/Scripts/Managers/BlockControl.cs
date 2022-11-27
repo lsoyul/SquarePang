@@ -320,7 +320,11 @@ public class BlockControl : MonoBehaviour
 
             if (haveToUseBreaker)
             {
-                if (haveToUseBreakerCount > GameBoard.RemainBreakerCount) return false;
+                if (haveToUseBreakerCount > GameBoard.RemainBreakerCount)
+                {
+                    onImpossiblePutBlockByBreakerCount?.Invoke(fitSlots);
+                    return false;
+                }
                 else
                 {
                     GameBoard.RemainBreakerCount -= haveToUseBreakerCount;
