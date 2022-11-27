@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour
     public Camera gameCamera;
     public static Camera GameCamera;
 
-    private void Awake()
+    private void Awake()    
     {
         if (gameCamera != null && GameCamera == null)
         {
