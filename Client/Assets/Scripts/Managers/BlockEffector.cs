@@ -24,9 +24,11 @@ public class BlockEffector : MonoBehaviour
     public float ReleaseOnBoard_FallDown_Duration = 0.5f;
 
     [Header("== Made Square Effect ==")]
+    public Light ingameDirectionalLight;
     public AnimationCurve MadeSquareEffect;
     public float MadeSquareEffect_Duration = 0.4f;
     public float MadeSquareEffect_TargetEmission = 2f;
+    public float MadeSquareEffect_DefaultLightIntensity = 1.5f;
 
     IEnumerator releaseIE;
     IEnumerator madeSquareIE;
@@ -191,6 +193,12 @@ public class BlockEffector : MonoBehaviour
                     }
                 }
             }
+            // 1 -> 0
+            // 1.5f --> 0.75f
+            float intensityRatio = 1f - MadeSquareEffect.Evaluate(timer / MadeSquareEffect_Duration);
+            intensityRatio = MadeSquareEffect_DefaultLightIntensity / 2f * intensityRatio;
+
+            ingameDirectionalLight.intensity = MadeSquareEffect_DefaultLightIntensity / 2f + intensityRatio;
 
             yield return null;
         }
@@ -207,6 +215,8 @@ public class BlockEffector : MonoBehaviour
                 }
             }
         }
+
+        ingameDirectionalLight.intensity = MadeSquareEffect_DefaultLightIntensity;
 
         isEffectTime = false;
         onEndMadeSquareEffect?.Invoke(madeSlotList);
