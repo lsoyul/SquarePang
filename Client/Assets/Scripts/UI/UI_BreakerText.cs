@@ -40,6 +40,10 @@ public class UI_BreakerText : MonoBehaviour
 
     void OnInitBoard()
     {
+        UIBreakerGauge_BG.sizeDelta = new Vector2(GameBoard.BoardScreenWidthHeight, UIBreakerGauge_BG.sizeDelta.y);
+        breakerGaugeMaxWidth = UIBreakerGauge_BG.rect.width;
+        breakerGaugeBaseUnitWidth = breakerGaugeMaxWidth / GameBoard.RemainBreakerMaxCount;
+
         breakerCountText.text = GameBoard.RemainBreakerCount.ToString();
         SetBreakerGauge(GameBoard.RemainBreakerCount, false);
 

@@ -38,6 +38,7 @@ public class GameBoard : MonoBehaviour
     public static float ValidReleaseMaxDist = 0f;
     public static float BoardScreenCoordBottomY = 0f;
     public static float BoardScreenCoordTopY = 0f;
+    public static float BoardScreenWidthHeight = 1500f;
 
     public const int ReviveMaxCount = 1;
     public static int ReviveRemainCount = ReviveMaxCount;
@@ -277,15 +278,19 @@ public class GameBoard : MonoBehaviour
             blockSlots.Add(newBlockSlotList);
         }
 
-        ValidReleaseMaxDist = Vector2.Distance(Camera.main.WorldToScreenPoint(blockSlots[0][1].transform.position), Camera.main.WorldToScreenPoint(blockSlots[0][2].transform.position));
+        Vector3 firstColBlockVertexPos = blockSlots[0][0].transform.position + Vector3.left * 0.5f;
+        Vector3 lastColBlockVertexPos = blockSlots[0][blockSlots[0].Count - 1].transform.position + Vector3.right * 0.5f;
+
+        BoardScreenWidthHeight = Vector2.Distance(CameraManager.GameCamera.WorldToScreenPoint(firstColBlockVertexPos), CameraManager.GameCamera.WorldToScreenPoint(lastColBlockVertexPos));
+        ValidReleaseMaxDist = Vector2.Distance(CameraManager.GameCamera.WorldToScreenPoint(blockSlots[0][1].transform.position), CameraManager.GameCamera.WorldToScreenPoint(blockSlots[0][2].transform.position));
 
         BlockSlot lastSlot = blockSlots[blockSlots.Count - 1][blockSlots[blockSlots.Count - 1].Count - 1];
         Vector3 targetWorldPos = lastSlot.transform.position + Vector3.down * 1.3f;
-        Vector2 lastSlotScreenPos = Camera.main.WorldToScreenPoint(targetWorldPos);
+        Vector2 lastSlotScreenPos = CameraManager.GameCamera.WorldToScreenPoint(targetWorldPos);
 
         BlockSlot firstSlot = blockSlots[0][0];
         Vector3 firstSlotWorldPos = firstSlot.transform.position + Vector3.up * 0.6f;
-        Vector2 firstSlotScreenPos = Camera.main.WorldToScreenPoint(firstSlotWorldPos);
+        Vector2 firstSlotScreenPos = CameraManager.GameCamera.WorldToScreenPoint(firstSlotWorldPos);
 
         BoardScreenCoordBottomY = lastSlotScreenPos.y;
         BoardScreenCoordTopY = firstSlotScreenPos.y;
