@@ -14,6 +14,8 @@ public class GameBoard : MonoBehaviour
     public GameObject slotRoot;
     public BlockSlot blockSlotBase;
     public GameObject backGround;
+    
+    public Canvas UIcanvas;
 
     public static int CurBoardWidth = BoardStatics.BOARD_WIDTH_MIN;
     public static int CurBoardHeight = BoardStatics.BOARD_HEIGHT_MIN;
@@ -281,7 +283,13 @@ public class GameBoard : MonoBehaviour
         Vector3 firstColBlockVertexPos = blockSlots[0][0].transform.position + Vector3.left * 0.5f;
         Vector3 lastColBlockVertexPos = blockSlots[0][blockSlots[0].Count - 1].transform.position + Vector3.right * 0.5f;
 
+        float canvasWidthSize = UIcanvas.GetComponent<RectTransform>().rect.width;
         BoardScreenWidthHeight = Vector2.Distance(CameraManager.GameCamera.WorldToScreenPoint(firstColBlockVertexPos), CameraManager.GameCamera.WorldToScreenPoint(lastColBlockVertexPos));
+
+        float widthRatio = BoardScreenWidthHeight / CameraManager.GameCamera.pixelWidth;
+
+        BoardScreenWidthHeight = canvasWidthSize * widthRatio;
+
         ValidReleaseMaxDist = Vector2.Distance(CameraManager.GameCamera.WorldToScreenPoint(blockSlots[0][1].transform.position), CameraManager.GameCamera.WorldToScreenPoint(blockSlots[0][2].transform.position));
 
         BlockSlot lastSlot = blockSlots[blockSlots.Count - 1][blockSlots[blockSlots.Count - 1].Count - 1];

@@ -8058,7 +8058,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 1
+  IsFinished: 0
 --- !u!114 &955385100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9678,7 +9678,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 1
+  IsFinished: 0
 --- !u!1001 &1053158727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12671,7 +12671,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 1
   ForWords: 
-  IsFinished: 0
+  IsFinished: 1
 --- !u!114 &1394424071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14360,7 +14360,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 1
+  IsFinished: 0
 --- !u!114 &1598094549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15315,7 +15315,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 1
+  IsFinished: 0
 --- !u!114 &1696297979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15741,6 +15741,7 @@ MonoBehaviour:
   slotRoot: {fileID: 1859874020}
   blockSlotBase: {fileID: 6406976919373281141}
   backGround: {fileID: 1095605538}
+  UIcanvas: {fileID: 18793811}
   boardWidth: 7
   boardHeight: 7
   boardXOffset: 0.5
