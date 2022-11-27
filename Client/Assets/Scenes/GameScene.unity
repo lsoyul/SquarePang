@@ -4116,7 +4116,7 @@ GameObject:
   - component: {fileID: 454069629}
   - component: {fileID: 454069627}
   m_Layer: 5
-  m_Name: ButtonStash
+  m_Name: ButtonKeep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5096,7 +5096,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stash
+  m_text: Keep
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ecd934252a8345ec9a0b79c86572994, type: 2}
   m_sharedMaterial: {fileID: 1968471638170630827, guid: 1ecd934252a8345ec9a0b79c86572994, type: 2}
