@@ -13,6 +13,22 @@ public class SPSoundManager : MonoBehaviour
         Title,
     }
 
+    public enum Sound_EFFECT
+    {
+        Error,
+        MadeFinish1,
+        MadeFinish2,
+        MadeFinish3,
+        MadeFinish4,
+        MadeStart,
+        MoveStart,
+        StompBoard,
+        StompBreaker,
+        Tick,
+        TouchFail,
+        TouchStart,
+    }
+
     public Slider Volume_Music;
     public Slider Volume_Sound;
 
@@ -69,6 +85,16 @@ public class SPSoundManager : MonoBehaviour
         if (MusicAudioSources.ContainsKey(musicName))
         {
             MusicAudioSources[musicName].PlayLoopingMusicManaged(1f, 2f, isLoop);
+        }
+    }
+
+    public static void PlayEffect(Sound_EFFECT sound)
+    {
+        string soundName = sound.ToString();
+
+        if (SoundAudioSources.ContainsKey(soundName))
+        {
+            SoundAudioSources[soundName].PlayOneShotSoundManaged(SoundAudioSources[soundName].clip, 1f);
         }
     }
 

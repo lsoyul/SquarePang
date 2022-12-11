@@ -115,6 +115,8 @@ public class BlockControl : MonoBehaviour
             isGrabbing = true;
 
             SetPolyominoAlpha(PointerManager.CurGrabbingPolyomino, 0.2f);
+
+            SPSoundManager.PlayEffect(SPSoundManager.Sound_EFFECT.TouchStart);
         }
     }
 
