@@ -246,6 +246,8 @@ public class BlockControl : MonoBehaviour
 
     public static void OnClickRotate()
     {
+        SPSoundManager.PlayEffect(SPSoundManager.Sound_EFFECT.Tick);
+
         NextBlocks[0].GetComponentInChildren<PolyominoBase>().RotateShape();
         onClickRotate?.Invoke();
     }
@@ -253,6 +255,8 @@ public class BlockControl : MonoBehaviour
 
     public void OnClickStash()
     {
+        SPSoundManager.PlayEffect(SPSoundManager.Sound_EFFECT.Tick);
+
         if (StashBlock == null)
         {
             StashBlock = NextBlocks[0];
