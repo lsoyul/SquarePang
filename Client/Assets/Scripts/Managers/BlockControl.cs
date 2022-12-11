@@ -81,11 +81,11 @@ public class BlockControl : MonoBehaviour
 
     void FixBlockBasePositions()
     {
-        nextBlockPos[0].position = Camera.main.ScreenToWorldPoint(new Vector3(UICurBlock.position.x, UICurBlock.position.y, 17f));
-        nextBlockPos[1].position = Camera.main.ScreenToWorldPoint(new Vector3(UINextBlock1.position.x, UINextBlock1.position.y, 32f));
-        nextBlockPos[2].position = Camera.main.ScreenToWorldPoint(new Vector3(UINextBlock2.position.x, UINextBlock2.position.y, 32f));
+        //nextBlockPos[0].position = Camera.main.ScreenToWorldPoint(new Vector3(UICurBlock.position.x, UICurBlock.position.y, 17f));
+        //nextBlockPos[1].position = Camera.main.ScreenToWorldPoint(new Vector3(UINextBlock1.position.x, UINextBlock1.position.y, 32f));
+        //nextBlockPos[2].position = Camera.main.ScreenToWorldPoint(new Vector3(UINextBlock2.position.x, UINextBlock2.position.y, 32f));
 
-        stashBlockPos.position = Camera.main.ScreenToWorldPoint(new Vector3(UIStashBlock.position.x, UIStashBlock.position.y, 32f));
+        //stashBlockPos.position = Camera.main.ScreenToWorldPoint(new Vector3(UIStashBlock.position.x, UIStashBlock.position.y, 32f));
     }
 
     void OnInitBoard()
@@ -280,7 +280,7 @@ public class BlockControl : MonoBehaviour
             if (go != null)
             {
                 go.GetComponentInChildren<PolyominoBase>().IsGrabable = false;
-                SetPolyominoAlpha(go.GetComponentInChildren<PolyominoBase>(), 0.5f);
+                SetPolyominoAlpha(go.GetComponentInChildren<PolyominoBase>(), 0.4f);
             }
         }
 
