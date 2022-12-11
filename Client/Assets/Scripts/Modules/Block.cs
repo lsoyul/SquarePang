@@ -28,7 +28,7 @@ public class Block : MonoBehaviour
 
     Color baseMatColor;
 
-    private void Start()
+    private void Awake()
     {
         SpriteRenderer spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
 

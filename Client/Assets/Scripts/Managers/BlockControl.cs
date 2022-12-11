@@ -277,7 +277,11 @@ public class BlockControl : MonoBehaviour
     {
         foreach (var go in NextBlocks)
         {
-            go.GetComponentInChildren<PolyominoBase>().IsGrabable = false;
+            if (go != null)
+            {
+                go.GetComponentInChildren<PolyominoBase>().IsGrabable = false;
+                SetPolyominoAlpha(go.GetComponentInChildren<PolyominoBase>(), 0.5f);
+            }
         }
 
         for (int i = 0; i < nextBlockPos.Count; i++)
@@ -290,9 +294,12 @@ public class BlockControl : MonoBehaviour
         {
             StashBlock.transform.position = stashBlockPos.position;
             StashBlock.GetComponentInChildren<PolyominoBase>().IsGrabable = false;
+
+            SetPolyominoAlpha(StashBlock.GetComponentInChildren<PolyominoBase>(), 1f);
         }
 
         NextBlocks[0].GetComponentInChildren<PolyominoBase>().IsGrabable = true;
+        SetPolyominoAlpha(NextBlocks[0].GetComponentInChildren<PolyominoBase>(), 1f);
         //NextBlocks[1].GetComponentInChildren<PolyominoBase>().IsGrabable = true;
     }
 
