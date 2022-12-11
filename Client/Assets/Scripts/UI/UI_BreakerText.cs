@@ -125,5 +125,6 @@ public class UI_BreakerText : MonoBehaviour
     void OnImpossiblePutBlockByBreakerCount(List<BlockSlot> failedSlots)
     {
         breakerGaugeTween.DORestart();
+        SPSoundManager.PlayEffect(SPSoundManager.Sound_EFFECT.Error);
     }
 }

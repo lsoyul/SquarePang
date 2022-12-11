@@ -56,6 +56,7 @@ public class BlockEffector : MonoBehaviour
 
     IEnumerator IEReleasePolyomino(List<BlockSlot> realSlots, List<BlockSlot> fakeSlots, PolyominoBase effectObj)
     {
+        SPSoundManager.PlayEffect(SPSoundManager.Sound_EFFECT.MoveStart);
         isEffectTime = true;
         onStartReleasePolyomino?.Invoke(realSlots, effectObj);
 
@@ -122,6 +123,7 @@ public class BlockEffector : MonoBehaviour
 
         Destroy(effectObj.gameObject);
 
+        bool isCrack = false;
         for (int i = 0; i < realSlots.Count; i++)
         {
             if (realSlots[i].curBlock != null)
@@ -132,10 +134,14 @@ public class BlockEffector : MonoBehaviour
 
             if (realSlots[i].curBlock == null && fakeSlots[i].curBlock != null)
             {
+                isCrack = true;
                 // Block Crash!
                 ParticleEffector.PlayEffect(ParticleEffector.EffectName.Crack, realSlots[i].AttachRoot.transform.position, Quaternion.identity);
             }
         }
+
+        if (isCrack) SPSoundManager.PlayEffect(SPSoundManager.Sound_EFFECT.StompBreaker);
+        else SPSoundManager.PlayEffect(SPSoundManager.Sound_EFFECT.StompBoard);
 
         foreach (BlockSlot fakeSlot in fakeSlots)
         {
@@ -177,6 +183,8 @@ public class BlockEffector : MonoBehaviour
             }
         }
 
+        SPSoundManager.PlayEffect(SPSoundManager.Sound_EFFECT.MadeStart);
+
         float timer = 0f;
 
         while (timer <= MadeSquareEffect_Duration)
@@ -203,6 +211,7 @@ public class BlockEffector : MonoBehaviour
             yield return null;
         }
 
+        SPSoundManager.Sound_EFFECT madeSoundType  = SPSoundManager.Sound_EFFECT.MadeFinish1;
         foreach (List<BlockSlot> slotList in madeSlotList)
         {
             foreach (BlockSlot slot in slotList)
@@ -214,6 +223,29 @@ public class BlockEffector : MonoBehaviour
                     ParticleEffector.PlayEffect(ParticleEffector.EffectName.BlockMade, slot.curBlock.transform.position, Quaternion.identity);
                 }
             }
+
+            // 3 4 5 6 7
+            switch (slotList.Count)
+            {
+                case 9:
+                case 16:
+                    madeSoundType = SPSoundManager.Sound_EFFECT.MadeFinish1;
+                    break;
+                case 25:
+                    madeSoundType = SPSoundManager.Sound_EFFECT.MadeFinish2;
+                    break;
+                case 36:
+                    madeSoundType = SPSoundManager.Sound_EFFECT.MadeFinish3;
+                    break;
+                case 49:
+                    madeSoundType = SPSoundManager.Sound_EFFECT.MadeFinish4;
+                    break;
+
+                default:
+                    break;
+            }
+
+            SPSoundManager.PlayEffect(madeSoundType);
         }
 
         ingameDirectionalLight.intensity = MadeSquareEffect_DefaultLightIntensity;

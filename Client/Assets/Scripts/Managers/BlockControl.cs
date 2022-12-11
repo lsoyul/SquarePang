@@ -386,6 +386,8 @@ public class BlockControl : MonoBehaviour
             return true;
         }
 
+        // Release Fail
+        SPSoundManager.PlayEffect(SPSoundManager.Sound_EFFECT.TouchFail);
         return false;
     }
 
