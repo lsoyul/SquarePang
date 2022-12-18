@@ -22,6 +22,24 @@ public class Fun_Effect : MonoBehaviour
         curTimer = 2f;
     }
 
+    private void OnEnable()
+    {
+        isEffecting = false;
+        StopAllCoroutines();
+
+        for (int i = 0; i < fun1ObjList.Count; i++)
+        {
+            fun1ObjList[i].isKinematic = false;
+            Vector3 randForce = new Vector3(Random.Range(-50000f, 50000f), Random.Range(20000f, 40000f), 0f);
+            fun1ObjList[i].AddForce(randForce, ForceMode.Impulse);
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     // Update is called once per frame
     void Update()
     {
