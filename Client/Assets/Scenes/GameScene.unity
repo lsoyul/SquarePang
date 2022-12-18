@@ -5279,7 +5279,7 @@ RectTransform:
   m_GameObject: {fileID: 531463633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5712756895688935265}
@@ -14984,7 +14984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00024414062, y: 0.00048828125}
+  m_AnchoredPosition: {x: -0.00048828125, y: 0.00048828125}
   m_SizeDelta: {x: -2432, y: -8182}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1525047968
@@ -17212,7 +17212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 149.99997, y: 750}
+  m_AnchoredPosition: {x: 149.99997, y: 1050}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1754312597
@@ -17403,7 +17403,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 450, y: 750}
+  m_AnchoredPosition: {x: 450, y: 1050}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1795817666
@@ -17638,7 +17638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -149.99997, y: 150}
+  m_AnchoredPosition: {x: -149.99997, y: 450}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!54 &1845043719 stripped
@@ -17754,7 +17754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1850855483161054531, guid: 242a4660587fd47668edeee3e866f1f8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2097
+      value: 1767.19
       objectReference: {fileID: 0}
     - target: {fileID: 1850855483161054531, guid: 242a4660587fd47668edeee3e866f1f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -18459,7 +18459,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: 1050}
+  m_AnchoredPosition: {x: -450, y: 1350}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1959087375
@@ -19353,7 +19353,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -149.99997, y: 1050}
+  m_AnchoredPosition: {x: -149.99997, y: 1350}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2082259685
@@ -20444,6 +20444,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 531463634}
     m_Modifications:
+    - target: {fileID: 1516677278518694731, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7009094
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516677278518694731, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7132504
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516677278518694731, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -91
+      objectReference: {fileID: 0}
     - target: {fileID: 1813117708917883595, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
       propertyPath: m_Name
       value: Fun_Polyomino_tetro_I

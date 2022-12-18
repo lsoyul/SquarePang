@@ -43,8 +43,8 @@ public class Fun_Effect : MonoBehaviour
         for (int i = 0; i < fun1ObjList.Count; i++)
         {
             fun1ObjList[i].isKinematic = true;
-            fun1ObjList[i].transform.DOMove(madeTarget1[i].position, 0.4f);
-            fun1ObjList[i].transform.DORotate(madeTarget1[i].rotation.eulerAngles, 0.4f);
+            fun1ObjList[i].transform.DOMove(madeTarget1[i].position, 0.7f).SetEase(Ease.InOutBack);
+            fun1ObjList[i].transform.DORotate(madeTarget1[i].rotation.eulerAngles, 0.7f).SetEase(Ease.InOutBack);
 
             yield return new WaitForSeconds(effectInterval);
         }
@@ -52,7 +52,7 @@ public class Fun_Effect : MonoBehaviour
         for (int i = 0; i < fun1ObjList.Count; i++)
         {
             fun1ObjList[i].isKinematic = false;
-            Vector3 randForce = new Vector3(Random.Range(-50000f, 50000f), Random.Range(-50000f, 50000f), 0f);
+            Vector3 randForce = new Vector3(Random.Range(-50000f, 50000f), Random.Range(20000f, 70000f), 0f);
             fun1ObjList[i].AddForce(randForce, ForceMode.Impulse);
         }
 
