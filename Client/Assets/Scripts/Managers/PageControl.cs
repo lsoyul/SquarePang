@@ -68,10 +68,14 @@ public class PageControl : MonoBehaviour
             case GamePage.Title:
                 TitlePage.SetActive(true);
                 GamePagee.SetActive(false);
+
+                SPSoundManager.PlayMusic(SPSoundManager.Sound_BGM.Title);
                 break;
             case GamePage.Game:
                 TitlePage.SetActive(false);
                 GamePagee.SetActive(true);
+
+                SPSoundManager.PlayMusic(SPSoundManager.Sound_BGM.Ingame);
                 break;
             default:
                 break;
