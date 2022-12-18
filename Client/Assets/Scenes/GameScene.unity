@@ -123,6 +123,69 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &6973327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6973328}
+  - component: {fileID: 6973329}
+  m_Layer: 5
+  m_Name: Fun_made_effect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6973328
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1076700354}
+  m_Father: {fileID: 531463634}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6973329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1a671add76d4a3daf513a1db330bfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fun1ObjList:
+  - {fileID: 1845043719}
+  - {fileID: 1394932593}
+  - {fileID: 249326847}
+  - {fileID: 502249242}
+  - {fileID: 486890683}
+  madeTarget1:
+  - {fileID: 1820208205}
+  - {fileID: 1730462273}
+  - {fileID: 2074571784}
+  - {fileID: 1772661481}
+  - {fileID: 1955589084}
+  effectTimer: 7
 --- !u!1 &12473620
 GameObject:
   m_ObjectHideFlags: 0
@@ -2791,6 +2854,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236998230}
   m_CullTransparentMesh: 1
+--- !u!54 &249326847 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3774431915139331722, guid: 48a6a1f296db648fe99542e583684810, type: 3}
+  m_PrefabInstance: {fileID: 3774431915027372661}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &256165538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3113,6 +3181,10 @@ PrefabInstance:
     - target: {fileID: 4902510139761969716, guid: 3d49d88074f3b4ce58dbded16824c90a, type: 3}
       propertyPath: m_Name
       value: Fun_Polyomino_tro_J
+      objectReference: {fileID: 0}
+    - target: {fileID: 4902510139761969716, guid: 3d49d88074f3b4ce58dbded16824c90a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5200562449946074036, guid: 3d49d88074f3b4ce58dbded16824c90a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3572,6 +3644,10 @@ PrefabInstance:
     - target: {fileID: 7282511078670872028, guid: 15aeab1a1f52f4527ac9c4d9f1f7f455, type: 3}
       propertyPath: m_Name
       value: Fun_Polyomino_tetro_S
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282511078670872028, guid: 15aeab1a1f52f4527ac9c4d9f1f7f455, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15aeab1a1f52f4527ac9c4d9f1f7f455, type: 3}
@@ -4836,6 +4912,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476309358}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &486890683 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2022773862560598196, guid: ec4db25098d9847209aa1147d39fdaad, type: 3}
+  m_PrefabInstance: {fileID: 533033990}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &491110668
 GameObject:
   m_ObjectHideFlags: 0
@@ -5057,6 +5138,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492707260}
   m_CullTransparentMesh: 1
+--- !u!54 &502249242 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5200562449946074037, guid: 3d49d88074f3b4ce58dbded16824c90a, type: 3}
+  m_PrefabInstance: {fileID: 279429214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &512621563
 GameObject:
   m_ObjectHideFlags: 0
@@ -5207,6 +5293,7 @@ RectTransform:
   - {fileID: 8035088986772302383}
   - {fileID: 1366630649131120474}
   - {fileID: 9148537626522639161}
+  - {fileID: 6973328}
   m_Father: {fileID: 512621564}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5301,6 +5388,10 @@ PrefabInstance:
     - target: {fileID: 1168537995693300021, guid: ec4db25098d9847209aa1147d39fdaad, type: 3}
       propertyPath: m_Name
       value: Fun_Polyomino_mono
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168537995693300021, guid: ec4db25098d9847209aa1147d39fdaad, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6004877465647915818, guid: ec4db25098d9847209aa1147d39fdaad, type: 3}
       propertyPath: m_Pivot.x
@@ -11177,6 +11268,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1074275263}
   m_CullTransparentMesh: 1
+--- !u!1 &1076700353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076700354}
+  m_Layer: 5
+  m_Name: made1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1076700354
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076700353}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1820208205}
+  - {fileID: 1730462273}
+  - {fileID: 2074571784}
+  - {fileID: 1772661481}
+  - {fileID: 1955589084}
+  m_Father: {fileID: 6973328}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1081556568
 GameObject:
   m_ObjectHideFlags: 0
@@ -13732,6 +13864,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394424068}
   m_CullTransparentMesh: 1
+--- !u!54 &1394932593 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7581106543270050909, guid: 15aeab1a1f52f4527ac9c4d9f1f7f455, type: 3}
+  m_PrefabInstance: {fileID: 364258124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1398076676
 GameObject:
   m_ObjectHideFlags: 0
@@ -14668,6 +14805,10 @@ PrefabInstance:
     - target: {fileID: 3166117904461436867, guid: b2afff4a486c64d809d4e67b9e8910b3, type: 3}
       propertyPath: m_Name
       value: Fun_Polyomino_tetro_T
+      objectReference: {fileID: 0}
+    - target: {fileID: 3166117904461436867, guid: b2afff4a486c64d809d4e67b9e8910b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7535270211113725404, guid: b2afff4a486c64d809d4e67b9e8910b3, type: 3}
       propertyPath: m_Pivot.x
@@ -17038,6 +17179,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721763405}
   m_CullTransparentMesh: 1
+--- !u!1 &1730462272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1730462273}
+  m_Layer: 5
+  m_Name: 2_tetro_S
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1730462273
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730462272}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1076700354}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 149.99997, y: 750}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1754312597
 GameObject:
   m_ObjectHideFlags: 0
@@ -17193,6 +17370,42 @@ Transform:
   m_Father: {fileID: 1048824546}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1772661480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1772661481}
+  m_Layer: 5
+  m_Name: 4_tro_J
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1772661481
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772661480}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1076700354}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 450, y: 750}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1795817666
 GameObject:
   m_ObjectHideFlags: 0
@@ -17392,6 +17605,47 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &1820208204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820208205}
+  m_Layer: 5
+  m_Name: 1_tetro_T
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1820208205
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820208204}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1076700354}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -149.99997, y: 150}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!54 &1845043719 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2870308589441615426, guid: b2afff4a486c64d809d4e67b9e8910b3, type: 3}
+  m_PrefabInstance: {fileID: 1499191105}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1859874020
 GameObject:
   m_ObjectHideFlags: 0
@@ -17537,6 +17791,10 @@ PrefabInstance:
     - target: {fileID: 6543000602615461724, guid: 242a4660587fd47668edeee3e866f1f8, type: 3}
       propertyPath: m_Name
       value: Fun_Polyomino_domino
+      objectReference: {fileID: 0}
+    - target: {fileID: 6543000602615461724, guid: 242a4660587fd47668edeee3e866f1f8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 242a4660587fd47668edeee3e866f1f8, type: 3}
@@ -18168,6 +18426,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1955589083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1955589084}
+  m_Layer: 5
+  m_Name: 5_mono
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1955589084
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955589083}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1076700354}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -450, y: 1050}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1959087375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19026,6 +19320,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &2074571783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2074571784}
+  m_Layer: 5
+  m_Name: 3_tetro_Z
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2074571784
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074571783}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1076700354}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -149.99997, y: 1050}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2082259685
 GameObject:
   m_ObjectHideFlags: 0
@@ -19704,6 +20034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fun_Polyomino_tetro_L
       objectReference: {fileID: 0}
+    - target: {fileID: 2391805946422757406, guid: 28b467143414f41aaad9752700cb275e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7085149535707312641, guid: 28b467143414f41aaad9752700cb275e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -19890,6 +20224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fun_Polyomino_tetro_J
       objectReference: {fileID: 0}
+    - target: {fileID: 7939741927060200140, guid: e6521d7fb2b7a4f92b437c25b93cdf70, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6521d7fb2b7a4f92b437c25b93cdf70, type: 3}
 --- !u!1001 &3774431915027372661
@@ -19902,6 +20240,10 @@ PrefabInstance:
     - target: {fileID: 4054458842434561803, guid: 48a6a1f296db648fe99542e583684810, type: 3}
       propertyPath: m_Name
       value: Fun_Polyomino_tetro_Z
+      objectReference: {fileID: 0}
+    - target: {fileID: 4054458842434561803, guid: 48a6a1f296db648fe99542e583684810, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8873977981629455636, guid: 48a6a1f296db648fe99542e583684810, type: 3}
       propertyPath: m_Pivot.x
@@ -20089,6 +20431,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fun_Polyomino_tro_I
       objectReference: {fileID: 0}
+    - target: {fileID: 4725528055892290610, guid: 322d4e0248efa48fea9440e6db72aaf8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 322d4e0248efa48fea9440e6db72aaf8, type: 3}
 --- !u!1001 &5241244963210252174
@@ -20101,6 +20447,10 @@ PrefabInstance:
     - target: {fileID: 1813117708917883595, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
       propertyPath: m_Name
       value: Fun_Polyomino_tetro_I
+      objectReference: {fileID: 0}
+    - target: {fileID: 1813117708917883595, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6506465421375109332, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
       propertyPath: m_Pivot.x
@@ -20168,11 +20518,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6506465421375109332, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 172
+      value: -510
       objectReference: {fileID: 0}
     - target: {fileID: 6506465421375109332, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1850
+      value: -1955
       objectReference: {fileID: 0}
     - target: {fileID: 6506465421375109332, guid: ace850898b539424f8cb2ef5b2a508b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -20366,6 +20716,10 @@ PrefabInstance:
     - target: {fileID: 5139919796410483429, guid: f1474feecc39f49aea336c4829f16908, type: 3}
       propertyPath: m_Name
       value: Fun_Polyomino_tetro_O
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139919796410483429, guid: f1474feecc39f49aea336c4829f16908, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1474feecc39f49aea336c4829f16908, type: 3}
