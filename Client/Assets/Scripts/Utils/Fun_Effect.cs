@@ -28,7 +28,6 @@ public class Fun_Effect : MonoBehaviour
         if (isEffecting == false)
         {
             curTimer += Time.deltaTime;
-            Debug.Log("curTimer: " + curTimer);
             if (curTimer > effectTimer)
             {
                 StartCoroutine(effector1());
