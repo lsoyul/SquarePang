@@ -179,7 +179,7 @@ public class BlockControl : MonoBehaviour
                 {
                     foreach (Block block in pb.blocks)
                     {
-                        block.SetBlockVisual(TEST_ChangeShape.CurVisual);
+                        block.SetBlockVisual();
                     } 
                 }
 

@@ -11,6 +11,7 @@ public class SPSoundManager : MonoBehaviour
     public enum Sound_BGM
     {
         Title,
+        Ingame,
     }
 
     public enum Sound_EFFECT
@@ -84,7 +85,19 @@ public class SPSoundManager : MonoBehaviour
 
         if (MusicAudioSources.ContainsKey(musicName))
         {
-            MusicAudioSources[musicName].PlayLoopingMusicManaged(1f, 2f, isLoop);
+            if (MusicAudioSources[musicName].isPlaying == false)
+            {
+                //StopAllMusic();
+                MusicAudioSources[musicName].PlayLoopingMusicManaged(1f, 1f, isLoop);
+            }
+        }
+    }
+
+    static void StopAllMusic()
+    {
+        foreach (KeyValuePair<string,AudioSource> audio in MusicAudioSources)
+        {
+            audio.Value.StopLoopingMusicManaged();
         }
     }
 
