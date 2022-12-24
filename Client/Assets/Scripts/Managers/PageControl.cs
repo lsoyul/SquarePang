@@ -17,6 +17,9 @@ public class PageControl : MonoBehaviour
     public GameObject TitlePage;
     public GameObject GamePagee;
 
+    public DOTweenAnimation settingPopupTweener;
+    public Tutorial tutorial;
+
     public List<DOTweenAnimation> tweenerInTitle;
 
     bool isInit = false;
@@ -85,6 +88,8 @@ public class PageControl : MonoBehaviour
 
         gameBoard.InitGameBoardBase(gameBoard.boardWidth, gameBoard.boardHeight);
         onChangePage?.Invoke(CurPage);
+        settingPopupTweener.DOPlayBackwards();
+        AppManager.IsSettingOn = false;
     }
 
     public void OnClick_ChangePage_GoTitle()
@@ -94,6 +99,21 @@ public class PageControl : MonoBehaviour
         //gameBoard.InitGameBoardBase(gameBoard.boardWidth, gameBoard.boardHeight);
         
         ChangePage(GamePage.Title);
+    }
+
+    public void OnClickTutorial()
+    {
+        tutorial.StartTutorial();
+        if (AppManager.IsSettingOn)
+        {
+            settingPopupTweener.DOPlayBackwards();
+            AppManager.IsSettingOn = false;
+        }
+    }
+
+    public void OnClickExitTutorial()
+    {
+        tutorial.ExitTutorial();
     }
 
     public void PlayTweeners(GamePage targetPage)
