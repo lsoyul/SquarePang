@@ -9,7 +9,7 @@ public class AdsManager : MonoBehaviour
 {
     public static AdsManager Instance;
 
-    bool isTestAds = true;
+    bool isTestAds = false;
 
     private InterstitialAd ads_Interstitial_AfterGameOver; // After Game Over Insterstitial
     private RewardedAd ads_Reward_AfterGameOver; // After Game Over Rewarded

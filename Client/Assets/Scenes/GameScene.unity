@@ -23205,7 +23205,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 0
   ForWords: 
-  IsFinished: 1
+  IsFinished: 0
 --- !u!1 &1525047968
 GameObject:
   m_ObjectHideFlags: 0
