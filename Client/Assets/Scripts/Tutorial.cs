@@ -9,6 +9,9 @@ public class Tutorial : MonoBehaviour
     public DOTweenAnimation tutorialTweener;
     public List<GameObject> pages;
 
+    public List<GameObject> desc_kor;
+    public List<GameObject> desc_eng;
+
     private int totalPageCount;
     private int curPage = 0;
 
@@ -22,13 +25,30 @@ public class Tutorial : MonoBehaviour
             totalPageCount = pages.Count;
         }
 
-        if (AppManager.deviceLanguage == SystemLanguage.Korean)
+        //if (true)
+        if (Application.systemLanguage == SystemLanguage.Korean)
         {
+            foreach (var item in desc_eng)
+            {
+                item.SetActive(false);
+            }
 
+            foreach (var item in desc_kor)
+            {
+                item.SetActive(true);
+            }
         }
         else
         {
+            foreach (var item in desc_eng)
+            {
+                item.SetActive(true);
+            }
 
+            foreach (var item in desc_kor)
+            {
+                item.SetActive(false);
+            }
         }
     }
 
