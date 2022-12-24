@@ -17,8 +17,16 @@ public class PageControl : MonoBehaviour
     public GameObject TitlePage;
     public GameObject GamePagee;
 
+    public GameObject settingButton;
+
     public DOTweenAnimation settingPopupTweener;
     public Tutorial tutorial;
+
+    public DOTweenAnimation creditTweener;
+    bool IsCreditOn = false;
+
+    public DOTweenAnimation titleTweener;
+    bool IsTitleOn = true;
 
     public List<DOTweenAnimation> tweenerInTitle;
 
@@ -90,6 +98,8 @@ public class PageControl : MonoBehaviour
         onChangePage?.Invoke(CurPage);
         settingPopupTweener.DOPlayBackwards();
         AppManager.IsSettingOn = false;
+
+        OnClickExitCredit();
     }
 
     public void OnClick_ChangePage_GoTitle()
@@ -109,11 +119,59 @@ public class PageControl : MonoBehaviour
             settingPopupTweener.DOPlayBackwards();
             AppManager.IsSettingOn = false;
         }
+
+        OnClickExitCredit();
     }
 
     public void OnClickExitTutorial()
     {
         tutorial.ExitTutorial();
+    }
+
+    public void OnClickCredit()
+    {
+        settingButton.SetActive(false);
+
+        if (IsCreditOn == false)
+        {
+            IsCreditOn = true;
+            creditTweener.DOPlayForward();
+        }
+
+        //if (IsTitleOn)
+        //{
+        //    IsTitleOn = false;
+        //    titleTweener.DOPlayForward();
+        //}
+
+        if (AppManager.IsSettingOn)
+        {
+            settingPopupTweener.DOPlayBackwards();
+            AppManager.IsSettingOn = false;
+        }
+    }
+
+    public void OnClickExitCredit()
+    {
+        settingButton.SetActive(true);
+
+        if (IsCreditOn == true)
+        {
+            IsCreditOn = false;
+            creditTweener.DOPlayBackwards();
+        }
+
+        if (IsTitleOn == false)
+        {
+            IsTitleOn = true;
+            titleTweener.DOPlayBackwards();
+        }
+
+        if (AppManager.IsSettingOn)
+        {
+            settingPopupTweener.DOPlayBackwards();
+            AppManager.IsSettingOn = false;
+        }
     }
 
     public void PlayTweeners(GamePage targetPage)

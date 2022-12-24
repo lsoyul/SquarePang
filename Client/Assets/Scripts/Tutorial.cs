@@ -34,7 +34,8 @@ public class Tutorial : MonoBehaviour
 
     public void StartTutorial()
     {
-        SetPage(0);
+        curPage = 0;
+        SetPage(curPage);
         tutorialTweener.DOPlayForward();
         IsOnTutorial = true;
     }
