@@ -23,8 +23,11 @@ public class RankingControl : MonoBehaviour
     private const string IOS_Ranking_ID_endless_short_test = "score_short_endless_test";
     private const string IOS_Ranking_ID_endless_classic_test = "score_classic_endless_test";
 
-    private const string ANDROID_Ranking_Endless_ID = GPGSIds.leaderboard_test_endless_score;
-    private const string ANDROID_Ranking_Sprint_ID = GPGSIds.leaderboard_test_sprint_score;
+    //private const string ANDROID_Ranking_Endless_ID = GPGSIds.leaderboard_test_endless_score;
+    //private const string ANDROID_Ranking_Sprint_ID = GPGSIds.leaderboard_test_sprint_score;
+
+    private const string ANDROID_Ranking_Endless_ID = GPGSIds.leaderboard_endless_score;
+    private const string ANDROID_Ranking_Sprint_ID = GPGSIds.leaderboard_sprint_score;
 
     private void Awake()
     {
