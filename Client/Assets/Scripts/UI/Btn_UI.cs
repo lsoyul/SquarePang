@@ -27,6 +27,8 @@ public class Btn_UI : MonoBehaviour
     private void Awake()
     {
         PageControl.onChangePage += OnChangePage;
+
+        GameBoard.onInitBoard += OnInitBoard;
         GameBoard.onMadeSquare += OnMadeSquare;
 
         BlockControl.onClickStash += OnClickStash;
@@ -38,6 +40,8 @@ public class Btn_UI : MonoBehaviour
     private void OnDestroy()
     {
         PageControl.onChangePage -= OnChangePage;
+
+        GameBoard.onInitBoard -= OnInitBoard;
         GameBoard.onMadeSquare -= OnMadeSquare;
 
         BlockControl.onClickStash -= OnClickStash;
@@ -57,18 +61,7 @@ public class Btn_UI : MonoBehaviour
 
     public void OnClickBoardClear()
     {
-        gameBoard.ClearGameBoardBase();
-
-        int.TryParse(uiBoardSize.sizeXText.text, out int boardWidth);
-        int.TryParse(uiBoardSize.sizeYText.text, out int boardHeight);
-
-
-        if (boardWidth > 0 && boardHeight > 0)
-            gameBoard.InitGameBoardBase(boardWidth, boardHeight);
-        else
-        {
-            gameBoard.InitGameBoardBase(gameBoard.boardWidth, gameBoard.boardHeight);
-        }
+        gameBoard.InitGameBoardBase(gameBoard.boardWidth, gameBoard.boardHeight);
     }
 
     void OnChangePage(GamePage gamePage)
@@ -105,5 +98,10 @@ public class Btn_UI : MonoBehaviour
     void OnMadeSquare(List<List<BlockSlot>> slotLists, int remainBreaker, bool isCleanBoard)
     {
         sprintText.text = string.Format("{0}/{1}", GameBoard.sprintModeCurMadeSquareCount, GameBoard.SprintModeMaxTargetSquareCount);
+    }
+
+    void OnInitBoard()
+    {
+        InitGameModeText(GameBoard.CurGameMode);
     }
 }
