@@ -17,6 +17,17 @@ public class Tutorial : MonoBehaviour
 
     public static bool IsOnTutorial = false;
 
+    void CheckHaveToShowFirstTutorial()
+    {
+        int watched = PlayerPrefs.GetInt("WatchedTutorial_t1", 0);
+        if (watched == 0)
+        {
+            // Show Once
+            PlayerPrefs.SetInt("WatchedTutorial_t1", 1);
+            StartTutorial();
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +61,8 @@ public class Tutorial : MonoBehaviour
                 item.SetActive(false);
             }
         }
+
+        CheckHaveToShowFirstTutorial();
     }
 
     public void StartTutorial()
