@@ -8153,7 +8153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5237115768487937236, guid: 85bc2957ae88c494596f386a39921bd2, type: 3}
       propertyPath: m_text
-      value: Asramazda
+      value: "\uC61B\uB0A0\uCE58\uD0A8"
       objectReference: {fileID: 0}
     - target: {fileID: 6730206183727397289, guid: 85bc2957ae88c494596f386a39921bd2, type: 3}
       propertyPath: m_text
@@ -21468,7 +21468,7 @@ MonoBehaviour:
   AutoPlay: 1
   Repeat: 1
   ForWords: 
-  IsFinished: 1
+  IsFinished: 0
 --- !u!114 &1394424071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28666,7 +28666,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 501.4305, y: 720.33}
+  m_SizeDelta: {x: 501.4305, y: 930.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1915951308
 MonoBehaviour:
@@ -28688,8 +28688,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: " Ria-\uCC44\uC740\n \uCC44\uC601\r\n \uC11C\uC601\r\n Adohi\r\n Habun\nAll
-    other testers"
+  m_text: " Ria-\uCC44\uC740\n \uCC44\uC601\r\n \uC11C\uC601\r\n Adohi\r\n Habun\n
+    \uCD5C\uC11D\uADFC\n Rocknz\nAll other testers"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9ddfc2b539b3d4c85add3f37fa886b65, type: 2}
   m_sharedMaterial: {fileID: 1342411946538612001, guid: 9ddfc2b539b3d4c85add3f37fa886b65, type: 2}
